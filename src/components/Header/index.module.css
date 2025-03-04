@@ -1,0 +1,24 @@
+.listitem {
+  position: relative;
+  /* width: 100%; */
+  max-width: 100px;
+}
+
+.overlay {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  top: -4px;
+  right: -6px;
+  background-color: #59168b;
+  padding: 4px;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  pointer-events: none;
+}
