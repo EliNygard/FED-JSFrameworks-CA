@@ -1,22 +1,21 @@
 import './App.css'
-import { Button } from '@/components/ui/button'
+import { Route, Routes } from "react-router-dom";
 
 function App() {
 
   return (
     <>
-    <div>
-      <h1>Header</h1>
-    </div>
-    <div className='bg-amber-200'>
-      <h2>Main content</h2>
-      <div className="">
-      <Button>Click me</Button>
-    </div>
-    </div>
-    <div>
-      <h3>Footer</h3>
-    </div>
+    <Routes>
+      <Route path='/'>
+        <Route index></Route>
+        <Route path='product:id'></Route>
+        <Route path='cart'></Route>
+        <Route path='checkout'></Route>
+        <Route path='checkout-success'></Route>
+        <Route path='contact'></Route>
+        <Route path='*'></Route>
+      </Route>
+    </Routes>
     </>
   )
 }
