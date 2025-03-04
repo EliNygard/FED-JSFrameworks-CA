@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
@@ -11,7 +13,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.40 0.16 326);
+  --primary: oklch(0.4 0.16 326);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -114,6 +116,10 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+@theme {
+  --font-montserrat: "Montserrat", sans-serif;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -121,5 +127,4 @@
   body {
     @apply bg-background text-foreground;
   }
-  
 }
