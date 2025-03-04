@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header className="flex justify-between items-center mt-2">
+    <header className="flex justify-between items-center mx-2 my-4">
       <Link to={"/"}>
-        <h1 className="text-xl text-primary md:text-2xl">Infinite Finds</h1>
+        <h1 className="text-xl text-primary md:text-2xl font-montserrat">
+          Infinite Finds
+        </h1>
       </Link>
       <nav>
         <ul className="flex flex-row gap-4">

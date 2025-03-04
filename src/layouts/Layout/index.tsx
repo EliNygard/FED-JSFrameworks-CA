@@ -4,12 +4,12 @@ import { Outlet } from "react-router-dom";
 
 export function Layout() {
   return (
-    <div className="m-2 min-h-screen grid grid-rows-[auto_1fr_auto]">
-      <Header></Header>
-      <main>
+    <div className="min-h-screen grid grid-rows-[auto_1fr_auto]">
+      <Header />
+      <main className="m-2">
         <Outlet></Outlet>
       </main>
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 }
