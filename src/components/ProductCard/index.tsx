@@ -54,8 +54,12 @@ const ProductCard: React.FC<IProductCardProps> = ({ product }) => {
   return (
     <>
       <Link to={`/product/${product.id}`}>
-        <div className="relative">
-          <img src={product.image.url} alt={product.title} />
+        <div className="relative h-[415px] max-h-[415px] ">
+          <img
+            className="h-full w-full object-cover"
+            src={product.image.url}
+            alt={product.title}
+          />
           {saleBadge}
         </div>
         <div className="mt-3 mb-4">

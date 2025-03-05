@@ -1,23 +1,14 @@
-import { useFetch } from "@/hooks/useFetch";
+import React from "react";
 import * as S from "./index.styles";
-import { baseUrl } from "@/api/Constants";
-import { IProduct } from "@/interface";
 import ProductCard from "../ProductCard";
 import ErrorBoundary from "../ErrorBoundary";
-import Loading from "../Loading";
+import { IProduct } from "@/interface";
 
-const ProductsList: React.FC = () => {
-  const { data, isLoading, isError } = useFetch<IProduct[]>(baseUrl);
+interface ProductsListProps {
+  data: IProduct[];
+}
 
-  if (isLoading || !data) {
-    return <Loading />;
-    // create a shadcn ui skeleton
-  }
-
-  if (isError) {
-    return <div>Could not get products. Please try again.</div>;
-  }
-
+const ProductsList: React.FC<ProductsListProps> = ({ data }) => {
   return (
     <>
       <S.Ul>
