@@ -3,6 +3,7 @@ import * as S from "./index.styles";
 import { baseUrl } from "@/api/Constants";
 import { IProduct } from "@/interface";
 import ProductCard from "../ProductCard";
+import ErrorBoundary from "../ErrorBoundary";
 
 const ProductsList: React.FC = () => {
   const { data, isLoading, isError } = useFetch<IProduct[]>(baseUrl);
@@ -20,8 +21,12 @@ const ProductsList: React.FC = () => {
     <>
       <S.Ul>
         {data.map((product) => (
-          <li key={product.id}>
-            <ProductCard product={product} />
+          <li key={product.id} className="mb-3">
+            <ErrorBoundary
+              fallback={<p>Could not display the product. Please try again.</p>}
+            >
+              <ProductCard product={product} />
+            </ErrorBoundary>
           </li>
         ))}
       </S.Ul>
