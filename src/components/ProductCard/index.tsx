@@ -1,6 +1,7 @@
 import React from "react";
 import { IProduct } from "@/interface";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
+import Button from "../Button";
 
 interface IProductCardProps {
   product: IProduct;
@@ -8,27 +9,59 @@ interface IProductCardProps {
 
 const ProductCard: React.FC<IProductCardProps> = ({ product }) => {
   const ratingNumber = product.rating;
+  let ratingDisplay;
 
-  const stars = Array.from({ length: ratingNumber }, (_, index) => (
-    <li key={index}>
-      <FaStar />
-    </li>
-  ));
+  if (ratingNumber > 0) {
+    const fullStars = Math.floor(ratingNumber);
+    const hasHalfStar = ratingNumber - fullStars === 0.5;
 
-  console.log(stars);
+    ratingDisplay = (
+      <>
+        {Array.from({ length: fullStars }, (_, index) => (
+          <li key={`star-${index}`}>
+            <FaStar />
+          </li>
+        ))}
+        {hasHalfStar && <FaStarHalfAlt key="star-half" />}
+      </>
+    );
+  } else {
+    ratingDisplay = <FaRegStar />;
+  }
+
+  const price = product.price;
+  const discountedPrice = product.discountedPrice;
+
+  let priceElement;
+
+  if (price > discountedPrice) {
+    priceElement = (
+      <>
+        <p className="text-primary">{discountedPrice}</p>
+        <p className="line-through">{price}</p>
+      </>
+    );
+  } else {
+    priceElement = <p className="">{price}</p>;
+  }
 
   return (
     <>
       <div>
         <img src={product.image.url} alt={product.title} />
+        <span>Sale</span>
       </div>
-      <div>
+      <div className="mt-3 mb-4">
         <ul className="flex flex-row gap-1 items-center">
-          {stars}
-          <span className="text-xs">{ratingNumber}</span>
+          {ratingDisplay}
+          <span className="ml-2 text-xs text-neutral-500">{ratingNumber}</span>
         </ul>
       </div>
-      <h3>{product.title}</h3>
+      <h3 className="uppercase font-montserrat">{product.title}</h3>
+      <div className="flex gap-5 mt-3 mb-3">{priceElement}</div>
+      <div className="">
+        <Button>Add to cart</Button>
+      </div>
     </>
   );
 };
