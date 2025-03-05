@@ -4,12 +4,13 @@ import { baseUrl } from "@/api/Constants";
 import { IProduct } from "@/interface";
 import ProductCard from "../ProductCard";
 import ErrorBoundary from "../ErrorBoundary";
+import Loading from "../Loading";
 
 const ProductsList: React.FC = () => {
   const { data, isLoading, isError } = useFetch<IProduct[]>(baseUrl);
 
   if (isLoading || !data) {
-    return <div>Loading products...</div>;
+    return <Loading />;
     // create a shadcn ui skeleton
   }
 
