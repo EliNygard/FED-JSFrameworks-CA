@@ -1,12 +1,18 @@
+import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useFetch } from "../../hooks/useFetch";
 import ProductsList from "@/components/ProductsList";
-import { SearchBar } from "@/components/SearchBar";
 import { IProduct } from "@/interface";
 import { baseUrl } from "@/api/Constants";
 import Loading from "@/components/Loading";
+import SearchBar from "@/components/SearchBar";
 
-export function Home() {
+interface HomeProps {
+  searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Home: React.FC<HomeProps> = ({ searchTerm, setSearchTerm }) => {
   const { data, isLoading, isError } = useFetch<IProduct[]>(baseUrl);
   console.log(data);
 
@@ -24,10 +30,14 @@ export function Home() {
         <title>Infinite Finds - Where Variety Never Ends</title>
         <meta name="description" content="Infinite Finds - home page" />
       </Helmet>
-      <SearchBar></SearchBar>
+      <SearchBar
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+      ></SearchBar>
       <section>
         <ProductsList data={data} />
       </section>
     </>
   );
-}
+};
+export default Home;
