@@ -9,8 +9,8 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  top: 20px;
-  right: 245px;
+  top: 1rem;
+  left: 1rem;
   font-size: 14px;
   pointer-events: none;
 }
