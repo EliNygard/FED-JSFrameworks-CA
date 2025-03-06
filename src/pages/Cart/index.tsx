@@ -1,3 +1,14 @@
+import Checkout from "@/components/Checkout";
+import { Helmet } from "react-helmet-async";
+
 export const Cart = () => {
-  return <h1>Cart</h1>;
+  return (
+    <>
+      <Helmet>
+        <title>Infinite Finds - Cart and checkout</title>
+        <meta name="description" content="Cart" />
+      </Helmet>
+      <Checkout />
+    </>
+  );
 };
