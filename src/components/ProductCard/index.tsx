@@ -2,10 +2,10 @@ import React from "react";
 import { IProduct } from "@/interface";
 import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
 import Button from "../Button";
-import styles from "./index.module.css";
 import { Link } from "react-router-dom";
+import ProductImage from "../productComponents/ProductImage";
 
-interface IProductCardProps {
+export interface IProductCardProps {
   product: IProduct;
 }
 
@@ -37,7 +37,7 @@ const ProductCard: React.FC<IProductCardProps> = ({ product }) => {
   const discountedPrice = product.discountedPrice;
 
   let priceElement;
-  let saleBadge;
+  // let saleBadge;
 
   if (price > discountedPrice) {
     priceElement = (
@@ -46,7 +46,7 @@ const ProductCard: React.FC<IProductCardProps> = ({ product }) => {
         <p className="line-through">{price}</p>
       </>
     );
-    saleBadge = <span className={styles.overlaySale}>Sale</span>;
+    // saleBadge = <span className={styles.overlaySale}>Sale</span>;
   } else {
     priceElement = <p className="">{price}</p>;
   }
@@ -55,12 +55,13 @@ const ProductCard: React.FC<IProductCardProps> = ({ product }) => {
     <>
       <Link to={`/product/${product.id}`}>
         <div className="relative h-[415px] max-h-[415px] ">
-          <img
+          <ProductImage product={product} />
+          {/* <img
             className="h-full w-full object-cover"
             src={product.image.url}
             alt={product.title}
           />
-          {saleBadge}
+          {saleBadge} */}
         </div>
         <div className="mt-3 mb-4">
           <ul className="flex flex-row gap-1 items-center">

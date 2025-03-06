@@ -1,4 +1,4 @@
-interface IProductImage {
+export interface IProductImage {
   url: string;
   alt: string;
 }
