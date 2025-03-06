@@ -14,7 +14,7 @@ const ProductCard: React.FC<IProductCardProps> = ({ product }) => {
   return (
     <>
       <Link to={`/product/${product.id}`}>
-        <div className="relative h-[415px] max-h-[415px] ">
+        <div className="relative h-[350px] max-h-[350px] w-full">
           <ProductImage product={product} />
         </div>
         <div className="mt-3 mb-4">
