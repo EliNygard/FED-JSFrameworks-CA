@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
-export function useFetch(url: string) {
-  const [data, setData] = useState(null);
+export function useFetch<T>(url: string) {
+  const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
 
@@ -15,6 +15,7 @@ export function useFetch(url: string) {
         const json = await response.json();
         const fetchedData = json.data;
 
+        await new Promise((resolve) => setTimeout(resolve, 2000));
         setData(fetchedData);
       } catch (error) {
         console.error(error);

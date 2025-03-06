@@ -1,0 +1,16 @@
+.overlaySale {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius);
+  padding: 3px 8px 4px 8px;
+  text-transform: lowercase;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  top: 1rem;
+  left: 1rem;
+  font-size: 14px;
+  pointer-events: none;
+}
