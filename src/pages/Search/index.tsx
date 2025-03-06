@@ -6,6 +6,7 @@ import { useFetch } from "@/hooks/useFetch";
 import { IProduct } from "@/interface";
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import * as S from "../../components/ProductsList/index.styles";
 
 interface SearchProps {
   searchTerm: string;
@@ -50,7 +51,7 @@ export const Search: React.FC<SearchProps> = ({ searchTerm }) => {
         <meta name="description" content="Infinite Finds - search" />
       </Helmet>
       <h2>{`Display ${searchResultNumber} products for "${searchTerm}"`}</h2>
-      <ul>
+      <S.Ul>
         {searchResult.map((product) => (
           <li key={product.id} className="mb-3">
             <ErrorBoundary
@@ -60,7 +61,7 @@ export const Search: React.FC<SearchProps> = ({ searchTerm }) => {
             </ErrorBoundary>
           </li>
         ))}
-      </ul>
+      </S.Ul>
     </>
   );
 };
