@@ -9,16 +9,18 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import * as S from "./index.styles";
 
 const ProductDetails: React.FC<IProduct> = ({ ...data }) => {
   return (
     <>
-      <section className="flex gap-4 m-auto flex-col items-center md:items-start md:flex-row md:max-w-11/12">
+      <S.ProductsDetailsGrid>
         <div className="relative h-[415px] max-h-[500px]">
           <ProductImage product={data} />
         </div>
-        <div className="flex flex-col">
-          <div className="flex flex-col items-center md:items-start justify-center md:justify-start">
+
+        <div className="ml-4">
+          <S.ProductDetailsContainer>
             <ProductRating product={data} />
             <h3 className="uppercase font-montserrat">{data.title}</h3>
             <ul className="flex flex-row gap-3 lowercase font-montserrat text-sm">
@@ -27,9 +29,11 @@ const ProductDetails: React.FC<IProduct> = ({ ...data }) => {
               ))}
             </ul>
             <ProductPrice product={data} />
-          </div>
-          <Button>Add to cart</Button>
-          <div className="flex flex-col items-start">
+          </S.ProductDetailsContainer>
+
+          <Button className="mt-3">Add to cart</Button>
+
+          <div className="mt-5">
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">
                 <AccordionTrigger className="font-montserrat">
@@ -45,30 +49,25 @@ const ProductDetails: React.FC<IProduct> = ({ ...data }) => {
                   Reviews
                 </AccordionTrigger>
                 <ul>
-                  {data.reviews.map(
-                    (review) => (
-                      console.log(review),
-                      (
-                        <li key={review.id}>
-                          <AccordionContent>
-                            <div className="border border-accent-foreground p-3">
-                              <div className="flex flex-row justify-between">
-                                <p>{review.username}</p>
-                                <p>Rating: {review.rating}</p>
-                              </div>
-                              <p className="mt-2">{review.description}</p>
-                            </div>
-                          </AccordionContent>
-                        </li>
-                      )
-                    ),
-                  )}
+                  {data.reviews.map((review) => (
+                    <li key={review.id}>
+                      <AccordionContent>
+                        <div className="border border-accent-foreground p-3">
+                          <div className="flex flex-row justify-between">
+                            <p>{review.username}</p>
+                            <p>Rating: {review.rating}</p>
+                          </div>
+                          <p className="mt-2">{review.description}</p>
+                        </div>
+                      </AccordionContent>
+                    </li>
+                  ))}
                 </ul>
               </AccordionItem>
             </Accordion>
           </div>
         </div>
-      </section>
+      </S.ProductsDetailsGrid>
     </>
   );
 };
