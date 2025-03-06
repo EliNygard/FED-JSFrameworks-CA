@@ -1,5 +1,5 @@
 import { baseUrl } from "@/api/Constants";
-import Loading from "@/components/Loading";
+import LoadingProductPage from "@/components/loaders/LoadingProductPage";
 import ProductDetails from "@/components/ProductDetails";
 import SearchBar from "@/components/SearchBar";
 import { useFetch } from "@/hooks/useFetch";
@@ -20,7 +20,7 @@ const Product: React.FC<HomeProps> = ({ searchTerm, setSearchTerm }) => {
   console.log(data);
 
   if (isLoading || !data) {
-    return <Loading />;
+    return <LoadingProductPage />;
     // add new Loading here
   }
 

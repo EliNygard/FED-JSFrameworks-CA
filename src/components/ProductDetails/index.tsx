@@ -19,7 +19,7 @@ const ProductDetails: React.FC<IProduct> = ({ ...data }) => {
           <ProductImage product={data} />
         </div>
 
-        <div className="ml-4">
+        <div className="sm:ml-4">
           <S.ProductDetailsContainer>
             <ProductRating product={data} />
             <h3 className="uppercase font-montserrat">{data.title}</h3>
