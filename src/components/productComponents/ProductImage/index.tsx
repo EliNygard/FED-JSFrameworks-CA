@@ -8,6 +8,7 @@ interface ProductImageProps {
 
 const ProductImage: React.FC<ProductImageProps> = ({ product }) => {
   const { price, discountedPrice } = product;
+
   const saleBadge =
     price > discountedPrice ? (
       <span className={styles.overlaySale}>Sale</span>
