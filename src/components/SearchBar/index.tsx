@@ -39,9 +39,9 @@ const SearchBar: React.FC<SearchProps> = ({ searchTerm, setSearchTerm }) => {
       {isOpen && (
         <div className="mt-2 p-4 border border-primary absolute z-10 bg-amber-50 w-full">
           <h2>Suggested search</h2>
-          <button>Perfume</button>
+          <button>Beauty</button>
+          <button>Watch</button>
           <button>Earbuds</button>
-          <button>Sneakers</button>
           <h2>Popular products</h2>
         </div>
       )}
