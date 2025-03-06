@@ -18,9 +18,7 @@ const Checkout = () => {
 
       <div>
         <CartItems />
-      </div>
 
-      <div>
         <CartTotals />
       </div>
 

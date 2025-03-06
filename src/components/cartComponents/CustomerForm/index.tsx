@@ -3,6 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import * as S from "./index.styles";
 import React from "react";
+import Button from "@/components/Button";
 
 interface ICustomerInput {
   email: string;
@@ -10,6 +11,7 @@ interface ICustomerInput {
   lastName: string;
   streetName: string;
   city: string;
+  cardNumber: string;
 }
 
 const customerSchema = yup
@@ -35,6 +37,10 @@ const customerSchema = yup
       .max(100)
       .required("Please enter a street address"),
     city: yup.string().min(1).max(50).required("Please enter a city"),
+    cardNumber: yup
+      .string()
+      .matches(/^[0-9]{16}$/, "Card number must be exactly 16 digits")
+      .required("Please enter your credit card number"),
   })
   .required();
 
@@ -51,11 +57,10 @@ const CustomerForm: React.FC = () => {
 
   return (
     <S.FormContainer>
-      <h2 className="font-montserrat text-primary mb-4 text-xl">
-        Your details
-      </h2>
-
       <form onSubmit={handleSubmit(onSubmit)}>
+        <h2 className="font-montserrat text-primary mb-4 text-xl">
+          Your details
+        </h2>
         <label htmlFor="email">Email</label>
         <input type="text" {...register("email")} />
         {errors.email && <p>{errors.email.message}</p>}
@@ -76,7 +81,15 @@ const CustomerForm: React.FC = () => {
         <input type="text" {...register("city")} />
         {errors.city && <p>{errors.city.message}</p>}
 
-        <button type="submit">Submit</button>
+        <h2 className="font-montserrat text-primary mb-4 text-xl mt-4">
+          Payment details
+        </h2>
+
+        <label htmlFor="cardNumber">Card Number</label>
+        <input type="text" {...register("cardNumber")} />
+        {errors.cardNumber && <p>{errors.cardNumber.message}</p>}
+
+        <Button type="submit">Submit</Button>
       </form>
     </S.FormContainer>
   );
