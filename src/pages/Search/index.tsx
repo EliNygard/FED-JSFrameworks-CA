@@ -1,6 +1,6 @@
 import { baseUrl } from "@/api/Constants";
 import ErrorBoundary from "@/components/ErrorBoundary";
-import Loading from "@/components/Loading";
+import LoadingCard from "@/components/loaders/LoadingCard";
 import ProductCard from "@/components/ProductCard";
 import { useFetch } from "@/hooks/useFetch";
 import { IProduct } from "@/interface";
@@ -14,7 +14,7 @@ export const Search: React.FC<SearchProps> = ({ searchTerm }) => {
   const { data, isLoading, isError } = useFetch<IProduct[]>(baseUrl);
 
   if (isLoading || !data) {
-    return <Loading />;
+    return <LoadingCard />;
   }
 
   if (isError) {

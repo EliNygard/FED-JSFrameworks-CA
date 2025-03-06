@@ -6,6 +6,7 @@ import { Cart } from "./pages/Cart";
 import { useState } from "react";
 import Home from "./pages/Home";
 import { Search } from "./pages/Search";
+import Product from "./pages/Product";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -20,7 +21,12 @@ function App() {
               <Home searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             }
           ></Route>
-          <Route path="product:id"></Route>
+          <Route
+            path="product/:id"
+            element={
+              <Product searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            }
+          ></Route>
           <Route
             path="search"
             element={<Search searchTerm={searchTerm} />}

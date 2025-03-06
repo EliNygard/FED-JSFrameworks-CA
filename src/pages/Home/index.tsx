@@ -4,7 +4,7 @@ import { useFetch } from "../../hooks/useFetch";
 import ProductsList from "@/components/ProductsList";
 import { IProduct } from "@/interface";
 import { baseUrl } from "@/api/Constants";
-import Loading from "@/components/Loading";
+import LoadingCard from "@/components/loaders/LoadingCard";
 import SearchBar from "@/components/SearchBar";
 
 interface HomeProps {
@@ -17,7 +17,7 @@ const Home: React.FC<HomeProps> = ({ searchTerm, setSearchTerm }) => {
   console.log(data);
 
   if (isLoading || !data) {
-    return <Loading />;
+    return <LoadingCard />;
   }
 
   if (isError) {

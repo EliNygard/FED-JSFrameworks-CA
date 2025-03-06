@@ -1,6 +1,6 @@
-import SkeletonCard from "../SkeletonCard";
+import SkeletonCard from "../../skeletons/SkeletonCard";
 
-export default function Loading() {
+export default function LoadingCard() {
   return (
     <main>
       <div className="grid grid-cols-1 gap-4">
