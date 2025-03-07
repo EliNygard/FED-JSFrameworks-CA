@@ -13,14 +13,19 @@ interface ICartItemProps {
 const CartItem: React.FC<ICartItemProps> = ({ product }) => {
   const dispatch = useDispatch();
 
+  const { price, discountedPrice } = product;
+
   console.log(product, product.quantity);
+
+  const cartItemTotal = product.price * product.quantity;
+  const cartItemTotalDiscounted = product.discountedPrice * product.quantity;
 
   return (
     <>
       <S.CartItemContainer>
         <div className="flex flex-row gap-3">
           <div className="w-1/2">
-            <img src="./Skjermbilde.png" alt="" />
+            <img src={product.image.url} alt={product.title} />
 
             <div className="flex flex-row gap-1 mt-2">
               <button className="bg-primary text-white h-7 w-7 justify-center">
@@ -49,8 +54,16 @@ const CartItem: React.FC<ICartItemProps> = ({ product }) => {
               </button>
             </div>
             <div className="flex gap-5">
-              <span>399</span>
-              <span>299</span>
+              {price > discountedPrice ? (
+                <>
+                  <span className="text-primary">
+                    {cartItemTotalDiscounted}
+                  </span>
+                  <span className="line-through">{cartItemTotal}</span>
+                </>
+              ) : (
+                <span>{cartItemTotal}</span>
+              )}
             </div>
           </div>
         </div>
