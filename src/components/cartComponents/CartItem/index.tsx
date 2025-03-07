@@ -1,16 +1,20 @@
+import React from "react";
 import ProductPrice from "@/components/productComponents/ProductPrice";
 import * as S from "./index.styles";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addProduct } from "@/features/cart/cartSlice";
+import { IProduct } from "@/interface";
 
-const CartItem = () => {
+interface ICartItemProps {
+  product: IProduct;
+}
+
+const CartItem: React.FC<ICartItemProps> = ({ product }) => {
   const dispatch = useDispatch();
 
-  const product = {
-    price: 399,
-    discountedPrice: 299,
-  };
+  console.log(product, product.quantity);
+
   return (
     <>
       <S.CartItemContainer>
@@ -38,7 +42,7 @@ const CartItem = () => {
 
           <div className="flex flex-col justify-between">
             <div>
-              <h3>Product Title</h3>
+              <h3>{product.title}</h3>
               <ProductPrice product={product} />
               <button>
                 <FaRegTrashAlt />
