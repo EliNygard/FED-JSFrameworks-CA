@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CartItemsContainer = styled.section`
+export const CartItemContainer = styled.section`
   background-color: whitesmoke;
   padding: 0.7rem;
   margin: auto;

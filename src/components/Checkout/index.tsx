@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Button from "../Button";
-import CartItems from "../cartComponents/CartItems";
+import CartItem from "../cartComponents/CartItem";
 import CartTotals from "../cartComponents/CartTotals";
 import CustomerForm from "../cartComponents/CustomerForm";
 import * as S from "./index.styles";
@@ -18,8 +18,8 @@ const Checkout = () => {
       </h2>
       <S.CheckoutContainer>
         <div className="cart-details">
-          <CartItems />
-          <CartItems />
+          <CartItem />
+          <CartItem />
           <CartTotals />
         </div>
 

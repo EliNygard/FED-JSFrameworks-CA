@@ -1,15 +1,19 @@
 import ProductPrice from "@/components/productComponents/ProductPrice";
 import * as S from "./index.styles";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addProduct } from "@/features/cart/cartSlice";
 
-const CartItems = () => {
+const CartItem = () => {
+  const dispatch = useDispatch();
+
   const product = {
     price: 399,
     discountedPrice: 299,
   };
   return (
     <>
-      <S.CartItemsContainer>
+      <S.CartItemContainer>
         <div className="flex flex-row gap-3">
           <div className="w-1/2">
             <img src="./Skjermbilde.png" alt="" />
@@ -23,7 +27,10 @@ const CartItems = () => {
                 defaultValue={product.quantity}
                 className="bg-primary/60 text-white h-7 w-7 justify-center text-center text-xs"
               />
-              <button className="bg-primary text-white h-7 w-7 justify-center">
+              <button
+                className="bg-primary text-white h-7 w-7 justify-center"
+                onClick={() => dispatch(addProduct(product))}
+              >
                 +
               </button>
             </div>
@@ -43,9 +50,9 @@ const CartItems = () => {
             </div>
           </div>
         </div>
-      </S.CartItemsContainer>
+      </S.CartItemContainer>
     </>
   );
 };
 
-export default CartItems;
+export default CartItem;

@@ -10,8 +10,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import * as S from "./index.styles";
+import { useDispatch } from "react-redux";
+import { addProduct } from "@/features/cart/cartSlice";
 
 const ProductDetails: React.FC<IProduct> = ({ ...data }) => {
+  const dispatch = useDispatch();
+
   return (
     <>
       <S.ProductsDetailsGrid>
@@ -31,7 +35,9 @@ const ProductDetails: React.FC<IProduct> = ({ ...data }) => {
             <ProductPrice product={data} />
           </S.ProductDetailsContainer>
 
-          <Button className="mt-3">Add to cart</Button>
+          <Button className="mt-3" onClick={() => dispatch(addProduct(data))}>
+            Add to cart
+          </Button>
 
           <div className="mt-5">
             <Accordion type="single" collapsible>
