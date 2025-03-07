@@ -5,6 +5,7 @@ export const CartItemsContainer = styled.section`
   padding: 0.7rem;
   margin: auto;
   max-width: 365px;
+  margin-bottom: 0.5rem;
 
   img {
     width: 100%;
