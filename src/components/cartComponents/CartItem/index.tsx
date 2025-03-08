@@ -3,7 +3,11 @@ import ProductPrice from "@/components/productComponents/ProductPrice";
 import * as S from "./index.styles";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { addProduct } from "@/features/cart/cartSlice";
+import {
+  addProduct,
+  decrementProduct,
+  removeProduct,
+} from "@/features/cart/cartSlice";
 import { IProduct } from "@/interface";
 
 interface ICartItemProps {
@@ -14,8 +18,6 @@ const CartItem: React.FC<ICartItemProps> = ({ product }) => {
   const dispatch = useDispatch();
 
   const { price, discountedPrice } = product;
-
-  console.log(product, product.quantity);
 
   const cartItemTotal = product.price * product.quantity;
   const cartItemTotalDiscounted = product.discountedPrice * product.quantity;
@@ -28,7 +30,10 @@ const CartItem: React.FC<ICartItemProps> = ({ product }) => {
             <img src={product.image.url} alt={product.title} />
 
             <div className="flex flex-row gap-1 mt-2">
-              <button className="bg-primary text-white h-7 w-7 justify-center">
+              <button
+                className="bg-primary text-white h-7 w-7 justify-center"
+                onClick={() => dispatch(decrementProduct(product))}
+              >
                 -
               </button>
               <input
@@ -50,19 +55,23 @@ const CartItem: React.FC<ICartItemProps> = ({ product }) => {
               <h3>{product.title}</h3>
               <ProductPrice product={product} />
               <button>
-                <FaRegTrashAlt />
+                <FaRegTrashAlt
+                  onClick={() => dispatch(removeProduct(product))}
+                />
               </button>
             </div>
             <div className="flex gap-5">
               {price > discountedPrice ? (
                 <>
                   <span className="text-primary">
-                    {cartItemTotalDiscounted}
+                    {cartItemTotalDiscounted.toFixed(2)}
                   </span>
-                  <span className="line-through">{cartItemTotal}</span>
+                  <span className="line-through">
+                    {cartItemTotal.toFixed(2)}
+                  </span>
                 </>
               ) : (
-                <span>{cartItemTotal}</span>
+                <span>{cartItemTotal.toFixed(2)}</span>
               )}
             </div>
           </div>

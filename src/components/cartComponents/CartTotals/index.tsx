@@ -15,16 +15,12 @@ const CartTotals = () => {
   return (
     <S.CartTotals>
       <div>
-        <h4>Sum</h4>
-        <span>{cartTotal.toFixed(2)}</span>
-      </div>
-      <div>
-        <h4>Discount</h4>
+        <h4>Total discount</h4>
         <span>{discountTotal.toFixed(2)}</span>
       </div>
       <div>
         <h4 className="font-bold">Total</h4>
-        <span></span>
+        <span>{cartTotal.toFixed(2)}</span>
       </div>
     </S.CartTotals>
   );
