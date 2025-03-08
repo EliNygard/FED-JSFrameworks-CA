@@ -1,16 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createSelector } from "@reduxjs/toolkit";
 import { IProduct } from "@/interface";
+import { RootState } from "@/app/store";
 
 interface ICartState {
   products: IProduct[];
   cartTotal: number;
   cartQuantity: number;
+  discountTotal: number;
 }
 
 const initialState: ICartState = {
   products: [],
   cartTotal: 0,
   cartQuantity: 0,
+  discountTotal: 0,
 };
 
 const cartSlice = createSlice({
@@ -28,7 +31,11 @@ const cartSlice = createSlice({
       }
 
       state.cartTotal = state.products.reduce(
-        (total, p) => total + p.price * p.quantity,
+        (total, p) =>
+          total +
+          (p.price === p.discountedPrice
+            ? p.price * p.quantity
+            : p.discountedPrice * p.quantity),
         0,
       );
 
@@ -47,3 +54,16 @@ const cartSlice = createSlice({
 export const { addProduct } = cartSlice.actions;
 
 export default cartSlice.reducer;
+
+// Selectors
+
+const selectProducts = (state: RootState) => state.cart.products;
+
+export const selectDiscountTotal = createSelector(
+  [selectProducts],
+  (products) =>
+    products.reduce(
+      (total, p) => total + (p.price - p.discountedPrice) * p.quantity,
+      0,
+    ),
+);
