@@ -32,13 +32,14 @@ const CartItem: React.FC<ICartItemProps> = ({ product }) => {
             <div className="flex flex-row gap-1 mt-2">
               <button
                 className="bg-primary text-white h-7 w-7 justify-center"
-                onClick={() => dispatch(decrementProduct(product))}
+                onClick={() => dispatch(decrementProduct(product.id))}
               >
                 -
               </button>
               <input
                 type="number"
-                defaultValue={product.quantity}
+                value={product.quantity}
+                readOnly
                 className="bg-primary/60 text-white h-7 w-7 justify-center text-center text-xs"
               />
               <button
@@ -56,7 +57,7 @@ const CartItem: React.FC<ICartItemProps> = ({ product }) => {
               <ProductPrice product={product} />
               <button>
                 <FaRegTrashAlt
-                  onClick={() => dispatch(removeProduct(product))}
+                  onClick={() => dispatch(removeProduct(product.id))}
                 />
               </button>
             </div>
