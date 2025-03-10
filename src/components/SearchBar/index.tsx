@@ -23,6 +23,7 @@ const SearchBar: React.FC<SearchProps> = ({ searchTerm, setSearchTerm }) => {
           type="text"
           id="searchInput"
           placeholder="Search for a product"
+          autoComplete="on"
           className="w-full border border-primary p-2 bg-neutral-100 grow"
           onFocus={() => setIsOpen(true)}
           value={searchTerm}
