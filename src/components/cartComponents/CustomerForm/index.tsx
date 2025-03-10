@@ -4,6 +4,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import * as S from "./index.styles";
 import Button from "@/components/Button";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/store";
+import { clearCart, selectDiscountTotal } from "@/features/cart/cartSlice";
 
 interface ICustomerInput {
   email: string;
@@ -13,8 +17,6 @@ interface ICustomerInput {
   city: string;
   cardNumber: string;
 }
-
-// get the cart items and totals from state here?
 
 const customerSchema = yup
   .object()
@@ -60,6 +62,11 @@ const customerSchema = yup
   .required();
 
 const CustomerForm: React.FC = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const products = useSelector((state: RootState) => state.cart.products);
+  const cartTotal = useSelector((state: RootState) => state.cart.cartTotal);
+  const discountTotal = useSelector(selectDiscountTotal);
   const {
     register,
     handleSubmit,
@@ -68,7 +75,18 @@ const CustomerForm: React.FC = () => {
 
   const onSubmit: SubmitHandler<ICustomerInput> = (data) => {
     console.log(data);
-    console.log("Order complete");
+    console.log(products);
+    console.log(cartTotal);
+
+    navigate("/checkout/thank-you", {
+      state: {
+        orderDetails: data,
+        cartItems: products,
+        cartTotal: cartTotal,
+        discountTotal: discountTotal,
+      },
+    });
+    dispatch(clearCart());
   };
 
   return (
@@ -127,12 +145,7 @@ const CustomerForm: React.FC = () => {
         </h2>
 
         <label htmlFor="cardNumber">Card Number</label>
-        <input
-          id="cardNumber"
-          type="text"
-          autoComplete="cc-number"
-          {...register("cardNumber")}
-        />
+        <input id="cardNumber" type="text" {...register("cardNumber")} />
         {errors.cardNumber && <p>{errors.cardNumber.message}</p>}
 
         <Button type="submit">Submit</Button>

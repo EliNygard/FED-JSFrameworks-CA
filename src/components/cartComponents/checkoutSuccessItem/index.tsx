@@ -1,27 +1,13 @@
 import React from "react";
+import * as S from "../CartItem/index.styles";
+import { ICartItemProps } from "../CartItem";
 import ProductPrice from "@/components/productComponents/ProductPrice";
-import * as S from "./index.styles";
-import { FaRegTrashAlt } from "react-icons/fa";
-import { useDispatch } from "react-redux";
-import {
-  addProduct,
-  decrementProduct,
-  removeProduct,
-} from "@/features/cart/cartSlice";
-import { IProduct } from "@/interface";
 
-export interface ICartItemProps {
-  product: IProduct;
-}
-
-const CartItem: React.FC<ICartItemProps> = ({ product }) => {
-  const dispatch = useDispatch();
-
+const CheckoutSuccessItem: React.FC<ICartItemProps> = ({ product }) => {
   const { price, discountedPrice } = product;
 
   const cartItemTotal = product.price * product.quantity;
   const cartItemTotalDiscounted = product.discountedPrice * product.quantity;
-
   return (
     <>
       <S.CartItemContainer>
@@ -30,24 +16,7 @@ const CartItem: React.FC<ICartItemProps> = ({ product }) => {
             <img src={product.image.url} alt={product.title} />
 
             <div className="flex flex-row gap-1 mt-2">
-              <button
-                className="bg-primary text-white h-7 w-7 justify-center"
-                onClick={() => dispatch(decrementProduct(product.id))}
-              >
-                -
-              </button>
-              <input
-                type="number"
-                value={product.quantity}
-                readOnly
-                className="bg-primary/60 text-white h-7 w-7 justify-center text-center text-xs"
-              />
-              <button
-                className="bg-primary text-white h-7 w-7 justify-center"
-                onClick={() => dispatch(addProduct(product))}
-              >
-                +
-              </button>
+              <p>{`Quantity: ${product.quantity}`}</p>
             </div>
           </div>
 
@@ -55,11 +24,6 @@ const CartItem: React.FC<ICartItemProps> = ({ product }) => {
             <div>
               <h3>{product.title}</h3>
               <ProductPrice product={product} />
-              <button>
-                <FaRegTrashAlt
-                  onClick={() => dispatch(removeProduct(product.id))}
-                />
-              </button>
             </div>
             <div className="flex gap-5">
               {price > discountedPrice ? (
@@ -82,4 +46,4 @@ const CartItem: React.FC<ICartItemProps> = ({ product }) => {
   );
 };
 
-export default CartItem;
+export default CheckoutSuccessItem;

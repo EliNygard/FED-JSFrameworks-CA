@@ -7,11 +7,16 @@ import CartTotals from "../cartComponents/CartTotals";
 import CustomerForm from "../cartComponents/CustomerForm";
 import * as S from "./index.styles";
 import { RootState } from "../../app/store";
+import { selectDiscountTotal } from "@/features/cart/cartSlice";
 
 const Checkout: React.FC = () => {
   const products = useSelector((state: RootState) => state.cart.products);
+  const cartTotal = useSelector((state: RootState) => state.cart.cartTotal);
+  const discountTotal = useSelector(selectDiscountTotal);
   useEffect(() => {
     console.log("Cart products: ", products);
+    console.log("Cart total: ", cartTotal);
+    console.log("Discount total: ", discountTotal);
   }, [products]);
   return (
     <>
@@ -32,7 +37,7 @@ const Checkout: React.FC = () => {
               </li>
             ))}
           </ul>
-          <CartTotals />
+          <CartTotals cartTotal={cartTotal} discountTotal={discountTotal} />
         </div>
 
         <div className="customer-details">

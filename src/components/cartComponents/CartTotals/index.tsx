@@ -1,13 +1,15 @@
-import { RootState } from "@/app/store";
+import React, { useEffect } from "react";
 import * as S from "./index.styles";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { selectDiscountTotal } from "@/features/cart/cartSlice";
 
-const CartTotals = () => {
-  const cartTotal = useSelector((state: RootState) => state.cart.cartTotal);
-  const discountTotal = useSelector(selectDiscountTotal);
+interface CartTotalsProps {
+  cartTotal: number;
+  discountTotal: number;
+}
 
+const CartTotals: React.FC<CartTotalsProps> = ({
+  cartTotal,
+  discountTotal,
+}) => {
   useEffect(() => {
     console.log("cart total: ", cartTotal);
   }, [cartTotal]);
