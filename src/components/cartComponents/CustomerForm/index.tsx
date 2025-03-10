@@ -1,8 +1,8 @@
+import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import * as S from "./index.styles";
-import React from "react";
 import Button from "@/components/Button";
 
 interface ICustomerInput {
@@ -14,6 +14,8 @@ interface ICustomerInput {
   cardNumber: string;
 }
 
+// get the cart items and totals from state here?
+
 const customerSchema = yup
   .object()
   .shape({
@@ -23,20 +25,33 @@ const customerSchema = yup
       .required("Please enter your email address"),
     firstName: yup
       .string()
-      .min(2)
-      .max(30)
+      .min(
+        2,
+        "Please enter your first name. First name must be at least 2 characters",
+      )
+      .max(30, "First name can not be over 30 characters")
       .required("Please enter your first name"),
     lastName: yup
       .string()
-      .min(2)
-      .max(30)
+      .min(
+        2,
+        "Please enter your last name. Last name must be at least 2 characters",
+      )
+      .max(30, "Last name can not be over 30 characters")
       .required("Please enter your last name"),
     streetName: yup
       .string()
-      .min(3)
-      .max(100)
+      .min(
+        3,
+        "Please enter the street name. Street name must be at least 3 characters",
+      )
+      .max(100, "Street name can not be over 100 characters")
       .required("Please enter a street address"),
-    city: yup.string().min(1).max(50).required("Please enter a city"),
+    city: yup
+      .string()
+      .min(1, "Please enter a city")
+      .max(50, "City can not be over 50 characters")
+      .required("Please enter a city"),
     cardNumber: yup
       .string()
       .matches(/^[0-9]{16}$/, "Card number must be exactly 16 digits")
@@ -53,6 +68,7 @@ const CustomerForm: React.FC = () => {
 
   const onSubmit: SubmitHandler<ICustomerInput> = (data) => {
     console.log(data);
+    console.log("Order complete");
   };
 
   return (
@@ -62,23 +78,48 @@ const CustomerForm: React.FC = () => {
           Your details
         </h2>
         <label htmlFor="email">Email</label>
-        <input type="text" {...register("email")} />
+        <input
+          id="email"
+          type="text"
+          autoComplete="email"
+          {...register("email")}
+        />
         {errors.email && <p>{errors.email.message}</p>}
 
         <label htmlFor="firstName">First Name</label>
-        <input type="text" {...register("firstName")} />
+        <input
+          id="firstName"
+          type="text"
+          autoComplete="given-name"
+          {...register("firstName")}
+        />
         {errors.firstName && <p>{errors.firstName.message}</p>}
 
         <label htmlFor="lastName">Last Name</label>
-        <input type="text" {...register("lastName")} />
+        <input
+          id="lastName"
+          type="text"
+          autoComplete="family-name"
+          {...register("lastName")}
+        />
         {errors.lastName && <p>{errors.lastName.message}</p>}
 
         <label htmlFor="streetName">Street Name</label>
-        <input type="text" {...register("streetName")} />
+        <input
+          id="streetName"
+          type="text"
+          autoComplete="address-line1"
+          {...register("streetName")}
+        />
         {errors.streetName && <p>{errors.streetName.message}</p>}
 
         <label htmlFor="city">City</label>
-        <input type="text" {...register("city")} />
+        <input
+          id="city"
+          type="text"
+          autoComplete="address-level2"
+          {...register("city")}
+        />
         {errors.city && <p>{errors.city.message}</p>}
 
         <h2 className="font-montserrat text-primary mb-4 text-xl mt-4">
@@ -86,7 +127,12 @@ const CustomerForm: React.FC = () => {
         </h2>
 
         <label htmlFor="cardNumber">Card Number</label>
-        <input type="text" {...register("cardNumber")} />
+        <input
+          id="cardNumber"
+          type="text"
+          autoComplete="cc-number"
+          {...register("cardNumber")}
+        />
         {errors.cardNumber && <p>{errors.cardNumber.message}</p>}
 
         <Button type="submit">Submit</Button>
