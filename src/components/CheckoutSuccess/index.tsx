@@ -37,31 +37,41 @@ const CheckoutSuccessDisplay: React.FC<CheckoutSuccessDisplayProps> = ({
       </div>
 
       <S.CheckoutContainer>
-        <section>
-          <h2>Thank you, {orderDetails.firstName}!</h2>
-          <h3>Your order is confirmed</h3>
+        <section className="sm:mx-3">
+          <h2 className="font-montserrat mb-4">
+            Thank you, {orderDetails.firstName}!
+          </h2>
+          <h3 className="font-semibold mb-2">Your order is confirmed</h3>
           <p>
             We have sent you a confirmation of the order to your email. You will
             receive an email when the order is shipped from us.
           </p>
-          <div className="border px-3 py-5">
-            <h4>Order Details</h4>
-            <h5>Contact information</h5>
+          <section className="border px-3 py-5 my-4 flex flex-col gap-2">
+            <h4 className="font-semibold">Order Details</h4>
+
+            <h5 className="font-semibold mt-2">Contact information</h5>
             <p>{orderDetails.email}</p>
 
-            <h5>Payment</h5>
-            <p>Card - total amount</p>
+            <h5 className="font-semibold mt-2">Payment</h5>
+            <p>Card - {cartTotal.toFixed(2)} kr</p>
 
-            <p>
-              {orderDetails.firstName} {orderDetails.lastName}
-            </p>
-            <p>{orderDetails.streetName}</p>
-            <p>{orderDetails.city}</p>
-          </div>
+            <div className="mt-2">
+              <p>
+                {orderDetails.firstName} {orderDetails.lastName}
+              </p>
+              <p>{orderDetails.streetName}</p>
+              <p>{orderDetails.city}</p>
+            </div>
+          </section>
+
+          <p>Please contact us if you have any questions about your order</p>
+          <Link to={"/contact"}>
+            <p>Contact us</p>
+          </Link>
         </section>
 
-        <section>
-          <h2>Order Summary</h2>
+        <section className="mt-4 sm:mt-0">
+          <h2 className="font-montserrat mb-4">Order Summary</h2>
           <div>
             <div className="cart-details">
               <ul>
@@ -79,11 +89,6 @@ const CheckoutSuccessDisplay: React.FC<CheckoutSuccessDisplayProps> = ({
           </div>
         </section>
       </S.CheckoutContainer>
-
-      <p>Please contact us if you have any questions about your order</p>
-      <Link to={"/contact"}>
-        <p>Contact us</p>
-      </Link>
     </>
   );
 };
