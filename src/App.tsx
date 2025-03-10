@@ -7,6 +7,7 @@ import { useState } from "react";
 import Home from "./pages/Home";
 import { Search } from "./pages/Search";
 import Product from "./pages/Product";
+import { CheckoutSuccess } from "./pages/CheckoutSuccess";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -32,8 +33,10 @@ function App() {
             element={<Search searchTerm={searchTerm} />}
           ></Route>
           <Route path="cart" element={<Cart />}></Route>
-          <Route path="checkout"></Route>
-          <Route path="checkout-success"></Route>
+          <Route
+            path="checkout/thank-you"
+            element={<CheckoutSuccess />}
+          ></Route>
           <Route path="contact" element={<Contact />}></Route>
           <Route path="*"></Route>
         </Route>
