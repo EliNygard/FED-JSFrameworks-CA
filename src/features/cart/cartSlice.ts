@@ -54,8 +54,6 @@ const cartSlice = createSlice({
         (total, p) => total + p.quantity,
         0,
       );
-
-      console.log("cart: ", state.cartTotal);
     },
 
     decrementProduct: (state, action) => {

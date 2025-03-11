@@ -66,10 +66,6 @@ const CustomerForm: React.FC = () => {
   } = useForm<IOrderDetails>({ resolver: yupResolver(customerSchema) });
 
   const onSubmit: SubmitHandler<IOrderDetails> = (data) => {
-    console.log(data);
-    console.log(products);
-    console.log(cartTotal);
-
     navigate("/checkout/thank-you", {
       state: {
         orderDetails: data,

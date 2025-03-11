@@ -11,11 +11,8 @@ import { CheckoutSuccess } from "./pages/CheckoutSuccess";
 
 function App() {
   const location = useLocation();
-  console.log(location);
   const params = new URLSearchParams(location.search);
-  console.log(params);
   const searchTermFromURL = params.get("term") || "";
-  console.log(searchTermFromURL);
 
   const [searchTerm, setSearchTerm] = useState(searchTermFromURL);
 

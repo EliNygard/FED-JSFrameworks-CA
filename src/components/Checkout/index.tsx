@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Button from "../Button";
@@ -13,11 +13,7 @@ const Checkout: React.FC = () => {
   const products = useSelector((state: RootState) => state.cart.products);
   const cartTotal = useSelector((state: RootState) => state.cart.cartTotal);
   const discountTotal = useSelector(selectDiscountTotal);
-  useEffect(() => {
-    console.log("Cart products: ", products);
-    console.log("Cart total: ", cartTotal);
-    console.log("Discount total: ", discountTotal);
-  }, [products]);
+
   return (
     <>
       <div className="w-1/2 sm:w-1/3 md:w-1/4 mb-8">

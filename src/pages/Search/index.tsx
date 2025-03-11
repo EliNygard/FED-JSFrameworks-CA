@@ -15,8 +15,6 @@ export const Search: React.FC<SearchProps> = ({
 }) => {
   const { data, isLoading, isError } = useFetch<IProduct[]>(baseUrl);
 
-  console.log("Search page: ", searchTerm);
-
   if (isLoading || !data) {
     return <LoadingCard />;
   }

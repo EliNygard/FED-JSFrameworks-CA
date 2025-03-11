@@ -9,7 +9,6 @@ import SearchBar from "@/components/SearchBar";
 
 const Home: React.FC<SearchProps> = ({ searchTerm, setSearchTerm }) => {
   const { data, isLoading, isError } = useFetch<IProduct[]>(baseUrl);
-  console.log(data);
 
   if (isLoading || !data) {
     return <LoadingCard />;
