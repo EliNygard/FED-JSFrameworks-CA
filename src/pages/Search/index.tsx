@@ -3,14 +3,11 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import LoadingCard from "@/components/loaders/LoadingCard";
 import ProductCard from "@/components/ProductCard";
 import { useFetch } from "@/hooks/useFetch";
-import { IProduct } from "@/interface";
+import { IProduct, SearchProps } from "@/interface";
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import * as S from "../../components/ProductsList/index.styles";
 
-interface SearchProps {
-  searchTerm: string;
-}
 export const Search: React.FC<SearchProps> = ({ searchTerm }) => {
   const { data, isLoading, isError } = useFetch<IProduct[]>(baseUrl);
 

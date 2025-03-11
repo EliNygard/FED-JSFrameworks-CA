@@ -1,11 +1,7 @@
-import { IProduct } from "@/interface";
+import { IProductProps } from "@/interface";
 import React from "react";
 
-interface ProductPriceProps {
-  product: IProduct;
-}
-
-const ProductPrice: React.FC<ProductPriceProps> = ({ product }) => {
+const ProductPrice: React.FC<IProductProps> = ({ product }) => {
   const { price, discountedPrice } = product;
 
   const priceElement =

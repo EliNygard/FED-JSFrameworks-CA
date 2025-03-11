@@ -1,5 +1,5 @@
 import React from "react";
-import { IProduct } from "@/interface";
+import { IProductProps } from "@/interface";
 import Button from "../Button";
 import { Link } from "react-router-dom";
 import ProductImage from "../productComponents/ProductImage";
@@ -8,11 +8,7 @@ import ProductRating from "../productComponents/ProductRating";
 import { useDispatch } from "react-redux";
 import { addProduct } from "@/features/cart/cartSlice";
 
-export interface IProductCardProps {
-  product: IProduct;
-}
-
-const ProductCard: React.FC<IProductCardProps> = ({ product }) => {
+const ProductCard: React.FC<IProductProps> = ({ product }) => {
   const dispatch = useDispatch();
 
   return (

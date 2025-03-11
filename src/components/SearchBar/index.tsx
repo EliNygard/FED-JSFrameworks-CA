@@ -1,10 +1,6 @@
 import React, { useState } from "react";
+import { SearchProps } from "@/interface";
 import { useNavigate } from "react-router-dom";
-
-interface SearchProps {
-  searchTerm: string;
-  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
-}
 
 const SearchBar: React.FC<SearchProps> = ({ searchTerm, setSearchTerm }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);

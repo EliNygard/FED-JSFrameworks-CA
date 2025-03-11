@@ -8,13 +8,9 @@ import {
   decrementProduct,
   removeProduct,
 } from "@/features/cart/cartSlice";
-import { IProduct } from "@/interface";
+import { IProductProps } from "@/interface";
 
-export interface ICartItemProps {
-  product: IProduct;
-}
-
-const CartItem: React.FC<ICartItemProps> = ({ product }) => {
+const CartItem: React.FC<IProductProps> = ({ product }) => {
   const dispatch = useDispatch();
 
   const { price, discountedPrice } = product;

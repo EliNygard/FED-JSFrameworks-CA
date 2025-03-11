@@ -8,15 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/store";
 import { clearCart, selectDiscountTotal } from "@/features/cart/cartSlice";
-
-interface ICustomerInput {
-  email: string;
-  firstName: string;
-  lastName: string;
-  streetName: string;
-  city: string;
-  cardNumber: string;
-}
+import { IOrderDetails } from "@/interface";
 
 const customerSchema = yup
   .object()
@@ -71,9 +63,9 @@ const CustomerForm: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ICustomerInput>({ resolver: yupResolver(customerSchema) });
+  } = useForm<IOrderDetails>({ resolver: yupResolver(customerSchema) });
 
-  const onSubmit: SubmitHandler<ICustomerInput> = (data) => {
+  const onSubmit: SubmitHandler<IOrderDetails> = (data) => {
     console.log(data);
     console.log(products);
     console.log(cartTotal);

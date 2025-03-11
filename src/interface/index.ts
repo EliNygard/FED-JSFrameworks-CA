@@ -22,3 +22,44 @@ export interface IProduct {
   reviews: IReview[];
   quantity: number;
 }
+
+export interface IOrderDetails {
+  email: string;
+  firstName: string;
+  lastName: string;
+  streetName: string;
+  city: string;
+  cardNumber: string;
+}
+
+export interface ICartState {
+  products: IProduct[];
+  cartTotal: number;
+  cartQuantity: number;
+  discountTotal: number;
+}
+
+export interface IProductProps {
+  product: IProduct;
+}
+
+export interface ProductsListProps {
+  data: IProduct[];
+}
+
+export interface SearchProps {
+  searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface CartTotalsProps {
+  cartTotal: number;
+  discountTotal: number;
+}
+
+export interface CheckoutSuccessDisplayProps {
+  orderDetails: IOrderDetails;
+  cartItems: IProduct[];
+  cartTotal: number;
+  discountTotal: number;
+}
