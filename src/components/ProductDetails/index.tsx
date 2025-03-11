@@ -10,11 +10,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import * as S from "./index.styles";
-import { useDispatch } from "react-redux";
-import { addProduct } from "@/features/cart/cartSlice";
+import useAddToCart from "@/hooks/useAddToCart";
 
 const ProductDetails: React.FC<IProduct> = ({ ...data }) => {
-  const dispatch = useDispatch();
+  const handleAddToCart = useAddToCart();
 
   return (
     <>
@@ -35,7 +34,7 @@ const ProductDetails: React.FC<IProduct> = ({ ...data }) => {
             <ProductPrice product={data} />
           </S.ProductDetailsContainer>
 
-          <Button className="mt-3" onClick={() => dispatch(addProduct(data))}>
+          <Button className="mt-3" onClick={() => handleAddToCart(data)}>
             Add to cart
           </Button>
 

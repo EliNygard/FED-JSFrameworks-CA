@@ -5,11 +5,10 @@ import { Link } from "react-router-dom";
 import ProductImage from "../productComponents/ProductImage";
 import ProductPrice from "../productComponents/ProductPrice";
 import ProductRating from "../productComponents/ProductRating";
-import { useDispatch } from "react-redux";
-import { addProduct } from "@/features/cart/cartSlice";
+import useAddToCart from "@/hooks/useAddToCart";
 
 const ProductCard: React.FC<IProductProps> = ({ product }) => {
-  const dispatch = useDispatch();
+  const handleAddToCart = useAddToCart();
 
   return (
     <>
@@ -24,9 +23,7 @@ const ProductCard: React.FC<IProductProps> = ({ product }) => {
         <ProductPrice product={product} />
       </Link>
       <div className="">
-        <Button onClick={() => dispatch(addProduct(product))}>
-          Add to cart
-        </Button>
+        <Button onClick={() => handleAddToCart(product)}>Add to cart</Button>
       </div>
     </>
   );
