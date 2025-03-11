@@ -37,7 +37,12 @@ function App() {
             path="checkout/thank-you"
             element={<CheckoutSuccess />}
           ></Route>
-          <Route path="contact" element={<Contact />}></Route>
+          <Route
+            path="contact"
+            element={
+              <Contact searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            }
+          ></Route>
           <Route path="*"></Route>
         </Route>
       </Routes>
