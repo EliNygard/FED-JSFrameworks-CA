@@ -6,23 +6,29 @@ import { z } from "zod";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import Button from "@/components/Button";
 
 const formSchema = z.object({
+  email: z.string().email({ message: "Invalid email address" }),
   name: z
     .string()
-    .min(2, { message: "Must be 2 or more characters long" })
+    .min(3, { message: "Must be 3 or more characters long" })
     .max(50, { message: "Must be 50 or fewer characters long" }),
-  email: z.string().email({ message: "Invalid email address" }),
+  subject: z
+    .string()
+    .min(3, { message: "Must be 3 or more characters long" })
+    .max(50, { message: "Must be 50 or fewer characters long" }),
   message: z
     .string()
-    .min(2, { message: "Must be 2 or more characters long" })
+    .min(3, { message: "Must be 3 or more characters long" })
     .max(2000, { message: "Must be 2000 or fewer characters long" }),
 });
 
@@ -63,9 +69,22 @@ export function ContactForm() {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>Full name</FormLabel>
               <FormControl>
                 <Input placeholder="Your name" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="subject"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Subject</FormLabel>
+              <FormControl>
+                <Input placeholder="Subject" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -78,8 +97,13 @@ export function ContactForm() {
             <FormItem>
               <FormLabel>Message</FormLabel>
               <FormControl>
-                <Input placeholder="Your message" {...field} />
+                <Textarea
+                  placeholder="Your message"
+                  className="resize-none"
+                  {...field}
+                />
               </FormControl>
+              <FormDescription>Max 2000 characters</FormDescription>
               <FormMessage />
             </FormItem>
           )}
