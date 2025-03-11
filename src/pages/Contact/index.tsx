@@ -21,8 +21,7 @@ export const Contact: React.FC<ContactProps> = ({
 
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
-      <section className="border border-black mt-8 mb-8 p-3">
-        <h1 className="font-montserrat text-lg mb-6">Send us a message</h1>
+      <section className="border border-black mt-8 mb-8 p-3 sm:max-w-9/12 m-auto">
         <div className="my-3">
           <ContactForm />
         </div>
