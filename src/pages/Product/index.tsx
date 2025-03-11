@@ -12,16 +12,11 @@ const Product: React.FC<SearchProps> = ({ searchTerm, setSearchTerm }) => {
   const { id } = useParams();
   const { data, isLoading, isError } = useFetch<IProduct>(`${baseUrl}/${id}`);
 
-  if (isLoading || !data) {
-    return <LoadingProductPage />;
-    // add new Loading here
-  }
-
-  if (isError) {
-    return <div>Could not get products. Please try again.</div>;
-  }
-
-  return (
+  return isLoading || !data ? (
+    <LoadingProductPage />
+  ) : isError ? (
+    <div>Could not get product. Please try again.</div>
+  ) : (
     <>
       <Helmet>
         <title>{data.title}</title>

@@ -10,15 +10,11 @@ import SearchBar from "@/components/SearchBar";
 const Home: React.FC<SearchProps> = ({ searchTerm, setSearchTerm }) => {
   const { data, isLoading, isError } = useFetch<IProduct[]>(baseUrl);
 
-  if (isLoading || !data) {
-    return <LoadingCard />;
-  }
-
-  if (isError) {
-    return <div>Could not get products. Please try again.</div>;
-  }
-
-  return (
+  return isLoading || !data ? (
+    <LoadingCard />
+  ) : isError ? (
+    <div>Could not get products. Please try again.</div>
+  ) : (
     <>
       <Helmet>
         <title>Infinite Finds - Where Variety Never Ends</title>
