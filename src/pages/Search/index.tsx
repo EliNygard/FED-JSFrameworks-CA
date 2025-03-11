@@ -1,15 +1,17 @@
+import React from "react";
 import { baseUrl } from "@/api/Constants";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import LoadingCard from "@/components/loaders/LoadingCard";
 import ProductCard from "@/components/ProductCard";
 import { useFetch } from "@/hooks/useFetch";
 import { IProduct, SearchProps } from "@/interface";
-import React from "react";
 import { Helmet } from "react-helmet-async";
 import * as S from "../../components/ProductsList/index.styles";
 
 export const Search: React.FC<SearchProps> = ({ searchTerm }) => {
   const { data, isLoading, isError } = useFetch<IProduct[]>(baseUrl);
+
+  console.log("Search page: ", searchTerm);
 
   if (isLoading || !data) {
     return <LoadingCard />;
@@ -28,6 +30,8 @@ export const Search: React.FC<SearchProps> = ({ searchTerm }) => {
       ),
   );
 
+  const searchResultNumber = searchResult.length;
+
   if (searchResult.length === 0) {
     return (
       <>
@@ -36,10 +40,6 @@ export const Search: React.FC<SearchProps> = ({ searchTerm }) => {
       </>
     );
   }
-
-  console.log(searchResult);
-  const searchResultNumber = searchResult.length;
-  console.log(searchResultNumber);
 
   return (
     <>

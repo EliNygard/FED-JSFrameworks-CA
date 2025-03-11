@@ -7,7 +7,13 @@ const SearchBar: React.FC<SearchProps> = ({ searchTerm, setSearchTerm }) => {
   const navigate = useNavigate();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!searchTerm.trim()) return;
+
     navigate(`/search?term=${encodeURIComponent(searchTerm)}`);
+
+    // setTimeout(() => {
+    //   setSearchTerm("");
+    // }, 100);
   };
   return (
     <div className="mb-4 relative md:max-w-9/12 m-auto">

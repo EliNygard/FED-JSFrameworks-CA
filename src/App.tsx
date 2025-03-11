@@ -1,16 +1,27 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Layout } from "./layouts/Layout";
 import { Contact } from "./pages/Contact";
 import { Cart } from "./pages/Cart";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Home from "./pages/Home";
 import { Search } from "./pages/Search";
 import Product from "./pages/Product";
 import { CheckoutSuccess } from "./pages/CheckoutSuccess";
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const location = useLocation();
+  console.log(location);
+  const params = new URLSearchParams(location.search);
+  console.log(params);
+  const searchTermFromURL = params.get("term") || "";
+  console.log(searchTermFromURL);
+
+  const [searchTerm, setSearchTerm] = useState(searchTermFromURL);
+
+  useEffect(() => {
+    setSearchTerm(searchTermFromURL);
+  }, [searchTermFromURL]);
 
   return (
     <>
@@ -30,7 +41,9 @@ function App() {
           ></Route>
           <Route
             path="search"
-            element={<Search searchTerm={searchTerm} />}
+            element={
+              <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            }
           ></Route>
           <Route path="cart" element={<Cart />}></Route>
           <Route
