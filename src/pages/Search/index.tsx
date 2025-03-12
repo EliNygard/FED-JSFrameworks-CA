@@ -1,19 +1,24 @@
-import React from "react";
-import { baseUrl } from "@/api/Constants";
+import React, { useEffect } from "react";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import LoadingHomePage from "@/components/loaders/LoadingHomePage";
 import ProductCard from "@/components/ProductCard";
-import { useFetch } from "@/hooks/useFetch";
 import { IProduct, SearchProps } from "@/interface";
 import { Helmet } from "react-helmet-async";
 import * as S from "../../components/ProductsList/index.styles";
 import SearchBar from "@/components/SearchBar";
+import { useSearchParams } from "react-router-dom";
 
-export const Search: React.FC<SearchProps> = ({
-  searchTerm,
-  setSearchTerm,
-}) => {
-  const { data, isLoading, isError } = useFetch<IProduct[]>(baseUrl);
+export const Search: React.FC<
+  SearchProps & { data: IProduct[]; isLoading: boolean; isError: boolean }
+> = ({ searchTerm, setSearchTerm, data, isLoading, isError }) => {
+  const [searchParams] = useSearchParams();
+  const searchParamTerm = searchParams.get("term") || "";
+
+  useEffect(() => {
+    if (searchParamTerm !== searchTerm) {
+      setSearchTerm(searchParamTerm);
+    }
+  }, [searchParamTerm]);
 
   if (isLoading || !data) {
     return <LoadingHomePage />;
@@ -25,10 +30,12 @@ export const Search: React.FC<SearchProps> = ({
 
   const searchResult = data.filter(
     (product) =>
-      product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      product.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.title.toLowerCase().includes(searchParamTerm.toLowerCase()) ||
+      product.description
+        ?.toLowerCase()
+        .includes(searchParamTerm.toLowerCase()) ||
       product.tags?.some((tag) =>
-        tag.toLowerCase().includes(searchTerm.toLowerCase()),
+        tag.toLowerCase().includes(searchParamTerm.toLowerCase()),
       ),
   );
 
@@ -40,7 +47,13 @@ export const Search: React.FC<SearchProps> = ({
         <title>Infinite Finds - Search</title>
         <meta name="description" content="Infinite Finds - search" />
       </Helmet>
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <SearchBar
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        data={data}
+        isLoading={isLoading}
+        isError={isError}
+      />
       {searchResult.length === 0 ? (
         <>
           <p>Unfortunately we do not have what you are looking for.</p>
@@ -50,7 +63,7 @@ export const Search: React.FC<SearchProps> = ({
         </>
       ) : (
         <>
-          <h2>{`Display ${searchResultNumber} products for "${searchTerm}"`}</h2>
+          <h2>{`Display ${searchResultNumber} products for "${searchParamTerm}"`}</h2>
           <S.Ul>
             {searchResult.map((product) => (
               <li key={product.id} className="mb-3">

@@ -1,14 +1,14 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { useFetch } from "../../hooks/useFetch";
 import ProductsList from "@/components/ProductsList";
 import { IProduct, SearchProps } from "@/interface";
-import { baseUrl } from "@/api/Constants";
 import LoadingHomePage from "@/components/loaders/LoadingHomePage";
 import SearchBar from "@/components/SearchBar";
 
-const Home: React.FC<SearchProps> = ({ searchTerm, setSearchTerm }) => {
-  const { data, isLoading, isError } = useFetch<IProduct[]>(baseUrl);
+const Home: React.FC<
+  SearchProps & { data: IProduct[]; isLoading: boolean; isError: boolean }
+> = ({ searchTerm, setSearchTerm, data, isLoading, isError }) => {
+  // const { data, isLoading, isError } = useFetch<IProduct[]>(baseUrl);
 
   return isLoading || !data ? (
     <LoadingHomePage />
@@ -23,6 +23,9 @@ const Home: React.FC<SearchProps> = ({ searchTerm, setSearchTerm }) => {
       <SearchBar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
+        data={data}
+        isLoading={isLoading}
+        isError={isError}
       ></SearchBar>
       <section>
         <ProductsList data={data} />

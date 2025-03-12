@@ -21,7 +21,7 @@ const Checkout: React.FC = () => {
           <Button>Back to shop</Button>
         </Link>
       </div>
-      <h2 className="font-montserrat text-center mb-4 text-xl">
+      <h2 className="font-montserrat text-center mb-4 text-xl md:text-2xl">
         Your shopping cart
       </h2>
       <S.CheckoutContainer>

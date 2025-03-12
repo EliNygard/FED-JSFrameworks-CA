@@ -9,8 +9,13 @@ import { Search } from "./pages/Search";
 import Product from "./pages/Product";
 import { CheckoutSuccess } from "./pages/CheckoutSuccess";
 import ScrollToTop from "./components/helpers/ScrollToTop";
+import { useFetch } from "./hooks/useFetch";
+import { IProduct } from "./interface";
+import { baseUrl } from "./api/Constants";
 
 function App() {
+  const { data, isLoading, isError } = useFetch<IProduct[]>(baseUrl);
+  const products = data ?? [];
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const searchTermFromURL = params.get("term") || "";
@@ -29,19 +34,37 @@ function App() {
           <Route
             index
             element={
-              <Home searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+              <Home
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                data={products}
+                isLoading={isLoading}
+                isError={isError}
+              />
             }
           ></Route>
           <Route
             path="product/:id"
             element={
-              <Product searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+              <Product
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                data={products}
+                isLoading={isLoading}
+                isError={isError}
+              />
             }
           ></Route>
           <Route
             path="search"
             element={
-              <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+              <Search
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                data={products}
+                isLoading={isLoading}
+                isError={isError}
+              />
             }
           ></Route>
           <Route path="cart" element={<Cart />}></Route>
@@ -52,7 +75,13 @@ function App() {
           <Route
             path="contact"
             element={
-              <Contact searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+              <Contact
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                data={products}
+                isLoading={isLoading}
+                isError={isError}
+              />
             }
           ></Route>
           <Route path="*"></Route>
