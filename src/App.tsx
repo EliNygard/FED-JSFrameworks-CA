@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import { Search } from "./pages/Search";
 import Product from "./pages/Product";
 import { CheckoutSuccess } from "./pages/CheckoutSuccess";
+import ScrollToTop from "./components/helpers/ScrollToTop";
 
 function App() {
   const location = useLocation();
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route
