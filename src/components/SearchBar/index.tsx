@@ -1,20 +1,22 @@
 import React, { useState } from "react";
+import { SearchProps } from "@/interface";
 import { useNavigate } from "react-router-dom";
-
-interface SearchProps {
-  searchTerm: string;
-  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
-}
 
 const SearchBar: React.FC<SearchProps> = ({ searchTerm, setSearchTerm }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const navigate = useNavigate();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!searchTerm.trim()) return;
+
     navigate(`/search?term=${encodeURIComponent(searchTerm)}`);
+
+    // setTimeout(() => {
+    //   setSearchTerm("");
+    // }, 100);
   };
   return (
-    <div className="mb-4 relative md:max-w-9/12 m-auto">
+    <div className="mb-4 relative md:max-w-5xl m-auto">
       <form className="flex flex-row" onSubmit={handleSubmit}>
         <label htmlFor="searchInput" className="sr-only">
           Search among all our products

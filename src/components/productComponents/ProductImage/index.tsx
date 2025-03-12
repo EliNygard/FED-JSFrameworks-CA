@@ -1,12 +1,8 @@
 import React from "react";
-import { IProduct } from "@/interface";
+import { IProductProps } from "@/interface";
 import styles from "./index.module.css";
 
-interface ProductImageProps {
-  product: IProduct;
-}
-
-const ProductImage: React.FC<ProductImageProps> = ({ product }) => {
+const ProductImage: React.FC<IProductProps> = ({ product }) => {
   const { price, discountedPrice } = product;
 
   const saleBadge =

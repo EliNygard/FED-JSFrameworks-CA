@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const ProductsDetailsGrid = styled.section`
   display: grid;
   grid-template-columns: repeat(1, minmax(auto, 1fr));
+  max-width: 1024px;
+  margin: auto;
 
   @media (min-width: 640px) {
     grid-template-columns: repeat(2, minmax(auto, 1fr));

@@ -2,25 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "../Button";
 import * as S from "../Checkout/index.styles";
-import { IProduct } from "@/interface";
+import { CheckoutSuccessDisplayProps } from "@/interface";
 import CheckoutSuccessItem from "../cartComponents/checkoutSuccessItem";
 import CartTotals from "../cartComponents/CartTotals";
-
-interface IOrderDetails {
-  email: string;
-  firstName: string;
-  lastName: string;
-  streetName: string;
-  city: string;
-  cardNumber: string;
-}
-
-interface CheckoutSuccessDisplayProps {
-  orderDetails: IOrderDetails;
-  cartItems: IProduct[];
-  cartTotal: number;
-  discountTotal: number;
-}
 
 const CheckoutSuccessDisplay: React.FC<CheckoutSuccessDisplayProps> = ({
   orderDetails,

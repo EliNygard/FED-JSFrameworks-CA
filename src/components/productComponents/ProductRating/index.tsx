@@ -1,11 +1,8 @@
-import { IProduct } from "@/interface";
 import React from "react";
+import { IProductProps } from "@/interface";
 import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
 
-interface ProductRatingProps {
-  product: IProduct;
-}
-const ProductRating: React.FC<ProductRatingProps> = ({ product }) => {
+const ProductRating: React.FC<IProductProps> = ({ product }) => {
   const { rating } = product;
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating - fullStars === 0.5;

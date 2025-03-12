@@ -1,13 +1,6 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
-import { IProduct } from "@/interface";
+import { ICartState } from "@/interface";
 import { RootState } from "@/app/store";
-
-interface ICartState {
-  products: IProduct[];
-  cartTotal: number;
-  cartQuantity: number;
-  discountTotal: number;
-}
 
 const initialState: ICartState = {
   products: [],
@@ -61,8 +54,6 @@ const cartSlice = createSlice({
         (total, p) => total + p.quantity,
         0,
       );
-
-      console.log("cart: ", state.cartTotal);
     },
 
     decrementProduct: (state, action) => {

@@ -1,19 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import * as S from "./index.styles";
-
-interface CartTotalsProps {
-  cartTotal: number;
-  discountTotal: number;
-}
+import { CartTotalsProps } from "@/interface";
 
 const CartTotals: React.FC<CartTotalsProps> = ({
   cartTotal,
   discountTotal,
 }) => {
-  useEffect(() => {
-    console.log("cart total: ", cartTotal);
-  }, [cartTotal]);
-
   return (
     <S.CartTotals>
       <div>

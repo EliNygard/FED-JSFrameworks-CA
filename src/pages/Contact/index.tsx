@@ -1,14 +1,10 @@
+import React from "react";
 import { ContactForm } from "@/components/ContactForm";
 import SearchBar from "@/components/SearchBar";
-import React from "react";
+import { SearchProps } from "@/interface";
 import { Helmet } from "react-helmet-async";
 
-interface ContactProps {
-  searchTerm: string;
-  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
-}
-
-export const Contact: React.FC<ContactProps> = ({
+export const Contact: React.FC<SearchProps> = ({
   searchTerm,
   setSearchTerm,
 }) => {

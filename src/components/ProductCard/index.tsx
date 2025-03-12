@@ -1,19 +1,14 @@
 import React from "react";
-import { IProduct } from "@/interface";
+import { IProductProps } from "@/interface";
 import Button from "../Button";
 import { Link } from "react-router-dom";
 import ProductImage from "../productComponents/ProductImage";
 import ProductPrice from "../productComponents/ProductPrice";
 import ProductRating from "../productComponents/ProductRating";
-import { useDispatch } from "react-redux";
-import { addProduct } from "@/features/cart/cartSlice";
+import useAddToCart from "@/hooks/useAddToCart";
 
-export interface IProductCardProps {
-  product: IProduct;
-}
-
-const ProductCard: React.FC<IProductCardProps> = ({ product }) => {
-  const dispatch = useDispatch();
+const ProductCard: React.FC<IProductProps> = ({ product }) => {
+  const handleAddToCart = useAddToCart();
 
   return (
     <>
@@ -28,9 +23,7 @@ const ProductCard: React.FC<IProductCardProps> = ({ product }) => {
         <ProductPrice product={product} />
       </Link>
       <div className="">
-        <Button onClick={() => dispatch(addProduct(product))}>
-          Add to cart
-        </Button>
+        <Button onClick={() => handleAddToCart(product)}>Add to cart</Button>
       </div>
     </>
   );

@@ -2,11 +2,7 @@ import React from "react";
 import * as S from "./index.styles";
 import ProductCard from "../ProductCard";
 import ErrorBoundary from "../ErrorBoundary";
-import { IProduct } from "@/interface";
-
-interface ProductsListProps {
-  data: IProduct[];
-}
+import { ProductsListProps } from "@/interface";
 
 const ProductsList: React.FC<ProductsListProps> = ({ data }) => {
   return (

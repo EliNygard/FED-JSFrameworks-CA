@@ -1,8 +1,9 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import * as S from "../../ProductDetails/index.styles";
+
 export default function SkeletonProductPage() {
   return (
-    <>
+    <div className="max-w-5xl m-auto">
       <S.ProductsDetailsGrid>
         <Skeleton className="h-[415px] max-h-[500px]" />
 
@@ -22,6 +23,6 @@ export default function SkeletonProductPage() {
           <Skeleton className="rounded-md w-full h-8 mt-4" />
         </div>
       </S.ProductsDetailsGrid>
-    </>
+    </div>
   );
 }

@@ -3,32 +3,20 @@ import LoadingProductPage from "@/components/loaders/LoadingProductPage";
 import ProductDetails from "@/components/ProductDetails";
 import SearchBar from "@/components/SearchBar";
 import { useFetch } from "@/hooks/useFetch";
-import { IProduct } from "@/interface";
+import { IProduct, SearchProps } from "@/interface";
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 
-interface HomeProps {
-  searchTerm: string;
-  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const Product: React.FC<HomeProps> = ({ searchTerm, setSearchTerm }) => {
+const Product: React.FC<SearchProps> = ({ searchTerm, setSearchTerm }) => {
   const { id } = useParams();
-
   const { data, isLoading, isError } = useFetch<IProduct>(`${baseUrl}/${id}`);
-  console.log(data);
 
-  if (isLoading || !data) {
-    return <LoadingProductPage />;
-    // add new Loading here
-  }
-
-  if (isError) {
-    return <div>Could not get products. Please try again.</div>;
-  }
-
-  return (
+  return isLoading || !data ? (
+    <LoadingProductPage />
+  ) : isError ? (
+    <div>Could not get product. Please try again.</div>
+  ) : (
     <>
       <Helmet>
         <title>{data.title}</title>
