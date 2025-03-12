@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IProduct, SearchProps } from "@/interface";
 import { Link, useNavigate } from "react-router-dom";
+import ProductPrice from "../productComponents/ProductPrice";
 
 const SearchBar: React.FC<
   SearchProps & { data: IProduct[]; isLoading: boolean; isError: boolean }
@@ -25,13 +26,7 @@ const SearchBar: React.FC<
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!searchTerm.trim()) return;
-
     navigate(`/search?term=${encodeURIComponent(searchTerm)}`);
-    setSearchTerm("");
-
-    // setTimeout(() => {
-    //   setSearchTerm("");
-    // }, 100);
   };
 
   if (isLoading || !data) {
@@ -71,22 +66,23 @@ const SearchBar: React.FC<
 
       {/* create a component  */}
       {isOpen && searchTerm.trim().length > 0 && (
-        <div className="mt-2 p-4 border border-primary absolute z-10 bg-amber-50 w-full">
+        <div className="mt-2 p-4 border border-primary absolute z-10 bg-white w-full">
           <h2 className="font-montserrat mb-3">Suggested products</h2>
           <ul className="flex flex-col gap-3">
             {searchInputResult.length > 0 ? (
               searchInputResult.map((product) => (
                 <li key={product.id}>
                   <Link to={`/product/${product.id}`}>
-                    <section className="flex flex-row gap-2">
+                    <section className="flex flex-row gap-2 items-center text-sm md:text-base">
                       <div className="w-15 h-15">
                         <img
-                          className="h-full w-full object-cover"
+                          className="w-full h-full object-cover"
                           src={product.image.url}
                           alt={product.title}
                         />
                       </div>
                       <h3>{product.title}</h3>
+                      <ProductPrice product={product} />
                     </section>
                   </Link>
                 </li>
