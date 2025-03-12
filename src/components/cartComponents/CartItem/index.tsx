@@ -21,13 +21,13 @@ const CartItem: React.FC<IProductProps> = ({ product }) => {
   return (
     <>
       <S.CartItemContainer>
-        <div className="flex flex-row gap-3">
-          <div className="w-1/2">
+        <div className="flex flex-row gap-8">
+          <div className="">
             <img src={product.image.url} alt={product.title} />
 
             <div className="flex flex-row gap-1 mt-2">
               <button
-                className="bg-primary text-white h-7 w-7 justify-center"
+                className="bg-primary text-white h-7 w-7 justify-center cursor-pointer"
                 onClick={() => dispatch(decrementProduct(product.id))}
               >
                 -
@@ -39,7 +39,7 @@ const CartItem: React.FC<IProductProps> = ({ product }) => {
                 className="bg-primary/60 text-white h-7 w-7 justify-center text-center text-xs"
               />
               <button
-                className="bg-primary text-white h-7 w-7 justify-center"
+                className="bg-primary text-white h-7 w-7 justify-center cursor-pointer"
                 onClick={() => dispatch(addProduct(product))}
               >
                 +
@@ -57,18 +57,18 @@ const CartItem: React.FC<IProductProps> = ({ product }) => {
                 />
               </button>
             </div>
-            <div className="flex gap-5">
+            <div className="flex gap-5 text-sm">
               {price > discountedPrice ? (
                 <>
                   <span className="text-primary">
-                    {cartItemTotalDiscounted.toFixed(2)}
+                    {`${cartItemTotalDiscounted.toFixed(2)} kr`}
                   </span>
                   <span className="line-through">
-                    {cartItemTotal.toFixed(2)}
+                    {`${cartItemTotal.toFixed(2)} kr`}
                   </span>
                 </>
               ) : (
-                <span>{cartItemTotal.toFixed(2)}</span>
+                <span>{`${cartItemTotal.toFixed(2)} kr`}</span>
               )}
             </div>
           </div>

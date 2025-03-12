@@ -14,18 +14,20 @@ export const Cart = () => {
         <title>Infinite Finds - Cart and checkout</title>
         <meta name="description" content="Cart" />
       </Helmet>
-      {cart.length === 0 ? (
-        <div className="my-4 mx-auto flex flex-col items-center max-w-3xl">
-          <p>Your shopping cart is empty</p>
-          <div className="w-full sm:w-1/3 md:w-1/4 mb-8 my-8">
-            <Link to={"/"}>
-              <Button>Back to shop</Button>
-            </Link>
+      <div className="max-w-5xl m-auto">
+        {cart.length === 0 ? (
+          <div className="my-4 mx-auto flex flex-col items-center max-w-3xl">
+            <p>Your shopping cart is empty</p>
+            <div className="w-full sm:w-1/3 md:w-1/4 mb-8 my-8">
+              <Link to={"/"}>
+                <Button>Back to shop</Button>
+              </Link>
+            </div>
           </div>
-        </div>
-      ) : (
-        <Checkout />
-      )}
+        ) : (
+          <Checkout />
+        )}
+      </div>
     </>
   );
 };

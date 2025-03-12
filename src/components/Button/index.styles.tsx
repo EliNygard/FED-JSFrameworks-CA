@@ -7,4 +7,5 @@ export const StyledButton = styled.button`
   text-transform: uppercase;
   width: 100%;
   padding: 4px 0 4px 0;
+  cursor: pointer;
 `;

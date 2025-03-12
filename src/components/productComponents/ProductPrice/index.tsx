@@ -7,14 +7,14 @@ const ProductPrice: React.FC<IProductProps> = ({ product }) => {
   const priceElement =
     price > discountedPrice ? (
       <>
-        <p className="text-primary">{discountedPrice}</p>
-        <p className="line-through">{price}</p>
+        <p className="text-primary">{`${discountedPrice} kr`}</p>
+        <p className="line-through">{`${price} kr`}</p>
       </>
     ) : (
-      <p className="">{price}</p>
+      <p className="">{`${price} kr`}</p>
     );
 
-  return <div className="flex gap-5 mt-3 mb-3">{priceElement}</div>;
+  return <div className="flex gap-5 mt-3 mb-3 text-sm">{priceElement}</div>;
 };
 
 export default ProductPrice;
