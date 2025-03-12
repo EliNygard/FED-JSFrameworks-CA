@@ -1,20 +1,46 @@
 import React, { useState } from "react";
-import { SearchProps } from "@/interface";
-import { useNavigate } from "react-router-dom";
+import { IProduct, SearchProps } from "@/interface";
+import { Link, useNavigate } from "react-router-dom";
 
-const SearchBar: React.FC<SearchProps> = ({ searchTerm, setSearchTerm }) => {
+const SearchBar: React.FC<
+  SearchProps & { data: IProduct[]; isLoading: boolean; isError: boolean }
+> = ({ searchTerm, setSearchTerm, data, isLoading, isError }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const navigate = useNavigate();
+
+  const searchInputResult =
+    searchTerm.trim().length > 0
+      ? data.filter(
+          (product) =>
+            product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            product.description
+              ?.toLowerCase()
+              .includes(searchTerm.toLowerCase()) ||
+            product.tags?.some((tag) =>
+              tag.toLowerCase().includes(searchTerm.toLowerCase()),
+            ),
+        )
+      : [];
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!searchTerm.trim()) return;
 
     navigate(`/search?term=${encodeURIComponent(searchTerm)}`);
+    setSearchTerm("");
 
     // setTimeout(() => {
     //   setSearchTerm("");
     // }, 100);
   };
+
+  if (isLoading || !data) {
+    return <div>Loading</div>;
+  }
+  if (isError) {
+    return <div>Could not suggest any results</div>;
+  }
+
   return (
     <div className="mb-4 relative md:max-w-5xl m-auto">
       <form className="flex flex-row" onSubmit={handleSubmit}>
@@ -25,11 +51,15 @@ const SearchBar: React.FC<SearchProps> = ({ searchTerm, setSearchTerm }) => {
           type="text"
           id="searchInput"
           placeholder="Search for a product"
-          autoComplete="on"
+          autoComplete="off"
           className="w-full border border-primary p-2 bg-neutral-100 grow"
           onFocus={() => setIsOpen(true)}
+          onBlur={() => setTimeout(() => setIsOpen(false), 200)}
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+            setIsOpen(true);
+          }}
         />
         <button
           className="bg-primary text-primary-foreground w-full max-w-20 px-3"
@@ -39,13 +69,32 @@ const SearchBar: React.FC<SearchProps> = ({ searchTerm, setSearchTerm }) => {
         </button>
       </form>
 
-      {isOpen && (
+      {/* create a component  */}
+      {isOpen && searchTerm.trim().length > 0 && (
         <div className="mt-2 p-4 border border-primary absolute z-10 bg-amber-50 w-full">
-          <h2>Suggested search</h2>
-          <button>Beauty</button>
-          <button>Watch</button>
-          <button>Earbuds</button>
-          <h2>Popular products</h2>
+          <h2 className="font-montserrat mb-3">Suggested products</h2>
+          <ul className="flex flex-col gap-3">
+            {searchInputResult.length > 0 ? (
+              searchInputResult.map((product) => (
+                <li key={product.id}>
+                  <Link to={`/product/${product.id}`}>
+                    <section className="flex flex-row gap-2">
+                      <div className="w-15 h-15">
+                        <img
+                          className="h-full w-full object-cover"
+                          src={product.image.url}
+                          alt={product.title}
+                        />
+                      </div>
+                      <h3>{product.title}</h3>
+                    </section>
+                  </Link>
+                </li>
+              ))
+            ) : (
+              <p>No matching products found. Please try again.</p>
+            )}
+          </ul>
         </div>
       )}
     </div>
