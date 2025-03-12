@@ -16,7 +16,7 @@ const SearchBar: React.FC<SearchProps> = ({ searchTerm, setSearchTerm }) => {
     // }, 100);
   };
   return (
-    <div className="mb-4 relative md:max-w-9/12 m-auto">
+    <div className="mb-4 relative md:max-w-5xl m-auto">
       <form className="flex flex-row" onSubmit={handleSubmit}>
         <label htmlFor="searchInput" className="sr-only">
           Search among all our products
