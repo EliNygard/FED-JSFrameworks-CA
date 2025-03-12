@@ -1,9 +1,9 @@
 import React from "react";
 import * as S from "../CartItem/index.styles";
-import { ICartItemProps } from "../CartItem";
 import ProductPrice from "@/components/productComponents/ProductPrice";
+import { IProductProps } from "@/interface";
 
-const CheckoutSuccessItem: React.FC<ICartItemProps> = ({ product }) => {
+const CheckoutSuccessItem: React.FC<IProductProps> = ({ product }) => {
   const { price, discountedPrice } = product;
 
   const cartItemTotal = product.price * product.quantity;
