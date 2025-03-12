@@ -15,7 +15,6 @@ export const Search: React.FC<
   const searchParamTerm = searchParams.get("term") || "";
 
   useEffect(() => {
-    console.log("performing search for: ", searchParamTerm);
     if (searchParamTerm !== searchTerm) {
       setSearchTerm(searchParamTerm);
     }
