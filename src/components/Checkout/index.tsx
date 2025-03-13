@@ -8,6 +8,7 @@ import CustomerForm from "../cartComponents/CustomerForm";
 import * as S from "./index.styles";
 import { RootState } from "../../app/store";
 import { selectDiscountTotal } from "@/features/cart/cartSlice";
+import ErrorBoundary from "../ErrorBoundary";
 
 const Checkout: React.FC = () => {
   const products = useSelector((state: RootState) => state.cart.products);
@@ -29,15 +30,21 @@ const Checkout: React.FC = () => {
           <ul>
             {products.map((product) => (
               <li key={product.id}>
-                <CartItem product={product} />
+                <ErrorBoundary fallback={<p>Could not load this cart item.</p>}>
+                  <CartItem product={product} />
+                </ErrorBoundary>
               </li>
             ))}
           </ul>
-          <CartTotals cartTotal={cartTotal} discountTotal={discountTotal} />
+          <ErrorBoundary fallback={<p>Could not load cart totals</p>}>
+            <CartTotals cartTotal={cartTotal} discountTotal={discountTotal} />
+          </ErrorBoundary>
         </div>
 
         <div className="customer-details">
-          <CustomerForm />
+          <ErrorBoundary fallback={<p>Could not load checkout form.</p>}>
+            <CustomerForm />
+          </ErrorBoundary>
         </div>
       </S.CheckoutContainer>
     </>

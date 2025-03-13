@@ -8,8 +8,6 @@ import SearchBar from "@/components/SearchBar";
 const Home: React.FC<
   SearchProps & { data: IProduct[]; isLoading: boolean; isError: boolean }
 > = ({ searchTerm, setSearchTerm, data, isLoading, isError }) => {
-  // const { data, isLoading, isError } = useFetch<IProduct[]>(baseUrl);
-
   return isLoading || !data ? (
     <LoadingHomePage />
   ) : isError ? (
