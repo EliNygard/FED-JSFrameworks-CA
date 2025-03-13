@@ -49,6 +49,14 @@ export function ContactForm() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     setSubmittedName(values.name);
+
+    console.group();
+    console.log("Data from contact form");
+    console.log("Email: ", values.email);
+    console.log("Name: ", values.name);
+    console.log("Subject: ", values.subject);
+    console.log("Message: ", values.message);
+
     form.reset();
   }
 
