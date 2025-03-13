@@ -4,10 +4,25 @@ import ProductsList from "@/components/ProductsList";
 import { IProduct, SearchProps } from "@/interface";
 import LoadingHomePage from "@/components/loaders/LoadingHomePage";
 import SearchBar from "@/components/SearchBar";
+import FilterNav from "@/components/FilterNav";
 
 const Home: React.FC<
-  SearchProps & { data: IProduct[]; isLoading: boolean; isError: boolean }
-> = ({ searchTerm, setSearchTerm, data, isLoading, isError }) => {
+  SearchProps & {
+    data: IProduct[];
+    isLoading: boolean;
+    isError: boolean;
+    setSortOption: (option: string) => void;
+    sortedData: IProduct[];
+  }
+> = ({
+  searchTerm,
+  setSearchTerm,
+  data,
+  isLoading,
+  isError,
+  setSortOption,
+  sortedData,
+}) => {
   return isLoading || !data ? (
     <LoadingHomePage />
   ) : isError ? (
@@ -18,16 +33,19 @@ const Home: React.FC<
         <title>Infinite Finds - Where Variety Never Ends</title>
         <meta name="description" content="Infinite Finds - home page" />
       </Helmet>
-      <SearchBar
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        data={data}
-        isLoading={isLoading}
-        isError={isError}
-      ></SearchBar>
-      <section>
-        <ProductsList data={data} />
-      </section>
+      <div className="max-w-7xl m-auto">
+        <SearchBar
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          data={data}
+          isLoading={isLoading}
+          isError={isError}
+        ></SearchBar>
+        <section>
+          <FilterNav setSortOption={setSortOption} />
+          <ProductsList data={sortedData} />
+        </section>
+      </div>
     </>
   );
 };
