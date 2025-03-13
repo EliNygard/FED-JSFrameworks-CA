@@ -48,6 +48,7 @@ const customerSchema = yup
       .required("Please enter a city"),
     cardNumber: yup
       .string()
+      .max(16, "Card number must be exactly 16 digits")
       .matches(/^[0-9]{16}$/, "Card number must be exactly 16 digits")
       .required("Please enter your credit card number"),
   })
@@ -90,7 +91,7 @@ const CustomerForm: React.FC = () => {
           autoComplete="email"
           {...register("email")}
         />
-        {errors.email && <p>{errors.email.message}</p>}
+        {errors.email && <p className="errormessage">{errors.email.message}</p>}
 
         <label htmlFor="firstName">First Name</label>
         <input
@@ -99,7 +100,9 @@ const CustomerForm: React.FC = () => {
           autoComplete="given-name"
           {...register("firstName")}
         />
-        {errors.firstName && <p>{errors.firstName.message}</p>}
+        {errors.firstName && (
+          <p className="errormessage">{errors.firstName.message}</p>
+        )}
 
         <label htmlFor="lastName">Last Name</label>
         <input
@@ -108,7 +111,9 @@ const CustomerForm: React.FC = () => {
           autoComplete="family-name"
           {...register("lastName")}
         />
-        {errors.lastName && <p>{errors.lastName.message}</p>}
+        {errors.lastName && (
+          <p className="errormessage">{errors.lastName.message}</p>
+        )}
 
         <label htmlFor="streetName">Street Name</label>
         <input
@@ -117,7 +122,9 @@ const CustomerForm: React.FC = () => {
           autoComplete="address-line1"
           {...register("streetName")}
         />
-        {errors.streetName && <p>{errors.streetName.message}</p>}
+        {errors.streetName && (
+          <p className="errormessage">{errors.streetName.message}</p>
+        )}
 
         <label htmlFor="city">City</label>
         <input
@@ -126,7 +133,7 @@ const CustomerForm: React.FC = () => {
           autoComplete="address-level2"
           {...register("city")}
         />
-        {errors.city && <p>{errors.city.message}</p>}
+        {errors.city && <p className="errormessage">{errors.city.message}</p>}
 
         <h2 className="font-montserrat text-primary mb-4 text-xl mt-4">
           Payment details
@@ -134,7 +141,9 @@ const CustomerForm: React.FC = () => {
 
         <label htmlFor="cardNumber">Card Number</label>
         <input id="cardNumber" type="text" {...register("cardNumber")} />
-        {errors.cardNumber && <p>{errors.cardNumber.message}</p>}
+        {errors.cardNumber && (
+          <p className="errormessage">{errors.cardNumber.message}</p>
+        )}
 
         <Button type="submit">Submit</Button>
       </form>

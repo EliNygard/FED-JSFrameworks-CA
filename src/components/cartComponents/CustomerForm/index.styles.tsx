@@ -23,4 +23,10 @@ export const FormContainer = styled.section`
   Button {
     margin-top: 2rem;
   }
+
+  .errormessage {
+    color: red;
+    margin-bottom: 1rem;
+    font-size: 90%;
+  }
 `;
