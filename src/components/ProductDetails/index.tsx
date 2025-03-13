@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import * as S from "./index.styles";
 import useAddToCart from "@/hooks/useAddToCart";
+import ErrorBoundary from "../ErrorBoundary";
 
 const ProductDetails: React.FC<IProduct> = ({ ...data }) => {
   const handleAddToCart = useAddToCart();
@@ -19,19 +20,25 @@ const ProductDetails: React.FC<IProduct> = ({ ...data }) => {
     <>
       <S.ProductsDetailsGrid>
         <div className="relative h-[415px] max-h-[500px]">
-          <ProductImage product={data} />
+          <ErrorBoundary fallback={<p>Could not load product image</p>}>
+            <ProductImage product={data} />
+          </ErrorBoundary>
         </div>
 
         <div className="sm:ml-4">
           <S.ProductDetailsContainer>
-            <ProductRating product={data} />
+            <ErrorBoundary fallback={<p>Could not load product rating</p>}>
+              <ProductRating product={data} />
+            </ErrorBoundary>
             <h3 className="uppercase font-montserrat">{data.title}</h3>
             <ul className="flex flex-row gap-3 lowercase font-montserrat text-sm">
               {data.tags.map((tag) => (
                 <li key={tag}>{tag}</li>
               ))}
             </ul>
-            <ProductPrice product={data} />
+            <ErrorBoundary fallback={<p>Could not load price</p>}>
+              <ProductPrice product={data} />
+            </ErrorBoundary>
           </S.ProductDetailsContainer>
 
           <Button className="mt-3" onClick={() => handleAddToCart(data)}>
@@ -44,7 +51,9 @@ const ProductDetails: React.FC<IProduct> = ({ ...data }) => {
                 <AccordionTrigger className="font-montserrat">
                   Description
                 </AccordionTrigger>
-                <AccordionContent>{data.description}</AccordionContent>
+                <ErrorBoundary fallback={<p>Could not load description</p>}>
+                  <AccordionContent>{data.description}</AccordionContent>
+                </ErrorBoundary>
               </AccordionItem>
             </Accordion>
 
