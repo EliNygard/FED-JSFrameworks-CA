@@ -11,16 +11,18 @@ const SearchBar: React.FC<
 
   const searchInputResult =
     searchTerm.trim().length > 0
-      ? data.filter(
-          (product) =>
-            product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            product.description
-              ?.toLowerCase()
-              .includes(searchTerm.toLowerCase()) ||
-            product.tags?.some((tag) =>
-              tag.toLowerCase().includes(searchTerm.toLowerCase()),
-            ),
-        )
+      ? data
+          .filter(
+            (product) =>
+              product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+              product.description
+                ?.toLowerCase()
+                .includes(searchTerm.toLowerCase()) ||
+              product.tags?.some((tag) =>
+                tag.toLowerCase().includes(searchTerm.toLowerCase()),
+              ),
+          )
+          .slice(0, 5)
       : [];
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -57,7 +59,7 @@ const SearchBar: React.FC<
           }}
         />
         <button
-          className="bg-primary text-primary-foreground w-full max-w-20 px-3"
+          className="bg-primary text-primary-foreground w-full max-w-20 px-3 cursor-pointer"
           type="submit"
         >
           Search
@@ -65,6 +67,7 @@ const SearchBar: React.FC<
       </form>
 
       {/* create a component  */}
+      {/* DROPDOWN ELEMENT */}
       {isOpen && searchTerm.trim().length > 0 && (
         <div className="mt-2 p-4 border border-primary absolute z-10 bg-white w-full">
           <h2 className="font-montserrat mb-3">Suggested products</h2>

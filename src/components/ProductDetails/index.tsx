@@ -54,19 +54,25 @@ const ProductDetails: React.FC<IProduct> = ({ ...data }) => {
                   Reviews
                 </AccordionTrigger>
                 <ul>
-                  {data.reviews.map((review) => (
-                    <li key={review.id}>
-                      <AccordionContent>
-                        <div className="border border-accent-foreground p-3">
-                          <div className="flex flex-row justify-between">
-                            <p>{review.username}</p>
-                            <p>Rating: {review.rating}</p>
+                  {data.reviews.length > 0 ? (
+                    data.reviews.map((review) => (
+                      <li key={review.id}>
+                        <AccordionContent>
+                          <div className="border border-accent-foreground p-3">
+                            <div className="flex flex-row justify-between">
+                              <p>{review.username}</p>
+                              <p>Rating: {review.rating}</p>
+                            </div>
+                            <p className="mt-2">{review.description}</p>
                           </div>
-                          <p className="mt-2">{review.description}</p>
-                        </div>
-                      </AccordionContent>
-                    </li>
-                  ))}
+                        </AccordionContent>
+                      </li>
+                    ))
+                  ) : (
+                    <AccordionContent>
+                      <div>This product has no reviews yet.</div>
+                    </AccordionContent>
+                  )}
                 </ul>
               </AccordionItem>
             </Accordion>
