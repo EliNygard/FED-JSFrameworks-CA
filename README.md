@@ -1,22 +1,23 @@
 <a name="readme-top"></a>
 
 #### FED2 JavaScript Frameworks CA - Online Shop
-
-# Infinite Finds
-
 ##### Delivery: March 2025
-
 
 <div align="center">
 
  <a href="https://infinitefinds.netlify.app/">
-    <img src="./src/assets/Website-screenshot.png" alt="Website home page" >
+    <img src="./src/assets/favicon_io_if/Website-screenshot.png" alt="Website home page" >
   </a>
   
+  <br>
+<p align="center">
+ 
+<a href="https://www.figma.com/design/YbtSJJbgrvVB3hfBbkhTpP/eCom?node-id=0-1&t=wuaRkZiOe5iHs9un-1">Figma Design File</a>
+    ·
+<a href="https://infinitefinds.netlify.app/">Visit the Website</a>
+</p>
+  
 </div>
-
-[Figma Design File](https://www.figma.com/design/YbtSJJbgrvVB3hfBbkhTpP/eCom?node-id=0-1&t=wuaRkZiOe5iHs9un-1) 
-[Visit Infinite Finds](https://infinitefinds.netlify.app/)
 
 
 ## Built With
@@ -53,4 +54,38 @@ Eli Nygård
 
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:eli.nygard@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/%20LinkedIn-0077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/eli-nygard)
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have Git installed on your local machine. You can download it from [here](https://git-scm.com/downloads)
+
+### Installation
+
+Clone the repo:
+
+```sh
+git clone https://github.com/EliNygard/fed2-jsframeworks-ca.git
+```
+
+### Open the project
+
+Navigate to the project directory:
+
+```sh
+cd fed2-jsframeworks-ca
+```
+
+Open the project with VSCode:
+
+```sh
+code .
+```
+
+Run npm install to install the necessary dependencies:
+
+```sh
+npm install
+```
 
