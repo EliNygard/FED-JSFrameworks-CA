@@ -81,6 +81,8 @@ function App() {
                 data={products}
                 isLoading={isLoading}
                 isError={isError}
+                setSortOption={setSortOption}
+                sortedData={sortedData}
               />
             }
           ></Route>
