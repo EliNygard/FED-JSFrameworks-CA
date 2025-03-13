@@ -41,7 +41,7 @@ const Home: React.FC<
           isLoading={isLoading}
           isError={isError}
         ></SearchBar>
-        <section>
+        <section className="mt-8">
           <FilterNav setSortOption={setSortOption} />
           <ProductsList data={sortedData} />
         </section>
