@@ -1,24 +1,11 @@
-<a name="readme-top"></a>
+# FED2 JavaScript Frameworks CA - Online Shop
 
-#### FED2 JavaScript Frameworks CA - Online Shop
-##### Delivery: March 2025
+## Delivery: March 2025
 
-<div align="center">
+[![Website home page](./src/assets/Website-screenshot.png)](https://infinitefinds.netlify.app/)
 
- <a href="https://infinitefinds.netlify.app/">
-    <img src="./src/assets/favicon_io_if/Website-screenshot.png" alt="Website home page" >
-  </a>
-  
-  <br>
-<p align="center">
- 
-<a href="https://www.figma.com/design/YbtSJJbgrvVB3hfBbkhTpP/eCom?node-id=0-1&t=wuaRkZiOe5iHs9un-1">Figma Design File</a>
-    ·
-<a href="https://infinitefinds.netlify.app/">Visit the Website</a>
-</p>
-  
-</div>
-
+[Figma Design File](https://www.figma.com/design/YbtSJJbgrvVB3hfBbkhTpP/eCom?node-id=0-1&t=wuaRkZiOe5iHs9un-1) ·
+[Visit the Website](https://infinitefinds.netlify.app/)
 
 ## Built With
 
@@ -40,17 +27,18 @@
 
 ## About The Project
 
-This is a website for the fictional online shop Infinite Finds. Brows through diverse product, add to cart and checkout. 
+This is a website for the fictional online shop Infinite Finds. Brows through diverse product, add to cart and checkout.
 
-The goal of this course assignment is to use React to build the website. 
+The goal of this course assignment is to use React to build the website.
 
 API documentation used on the project:
 The API can be found in the [Noroff API documentation](https://docs.noroff.dev/docs/v2/basic/online-shop)
 
 ## Contact
+
 Feel free to contact me
 
-Eli Nygård 
+Eli Nygård
 
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:eli.nygard@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/%20LinkedIn-0077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/eli-nygard)
@@ -88,4 +76,3 @@ Run npm install to install the necessary dependencies:
 ```sh
 npm install
 ```
-
