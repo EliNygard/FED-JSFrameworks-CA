@@ -13,13 +13,7 @@ const CheckoutSuccessDisplay: React.FC<CheckoutSuccessDisplayProps> = ({
   discountTotal,
 }) => {
   return (
-    <>
-      <div className="w-1/2 sm:w-1/3 md:w-1/4 mb-8">
-        <Link to={"/"}>
-          <Button>Back to shop</Button>
-        </Link>
-      </div>
-
+    <div className="max-w-5xl m-auto mt-8">
       <S.CheckoutContainer>
         <section className="sm:mx-3">
           <h2 className="font-montserrat mb-4">
@@ -48,10 +42,18 @@ const CheckoutSuccessDisplay: React.FC<CheckoutSuccessDisplayProps> = ({
             </div>
           </section>
 
-          <p>Please contact us if you have any questions about your order</p>
-          <Link to={"/contact"}>
-            <p>Contact us</p>
-          </Link>
+          <div className="mb-8">
+            <Link to={"/"}>
+              <Button>Back to shop</Button>
+            </Link>
+          </div>
+
+          <div className="mt-14 flex flex-col gap-4">
+            <p>Please contact us if you have any questions about your order</p>
+            <Link to={"/contact"}>
+              <Button>Contact us</Button>
+            </Link>
+          </div>
         </section>
 
         <section className="mt-4 sm:mt-0">
@@ -73,7 +75,7 @@ const CheckoutSuccessDisplay: React.FC<CheckoutSuccessDisplayProps> = ({
           </div>
         </section>
       </S.CheckoutContainer>
-    </>
+    </div>
   );
 };
 

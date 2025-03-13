@@ -57,7 +57,7 @@ const SearchBar: React.FC<
           }}
         />
         <button
-          className="bg-primary text-primary-foreground w-full max-w-20 px-3"
+          className="bg-primary text-primary-foreground w-full max-w-20 px-3 cursor-pointer"
           type="submit"
         >
           Search

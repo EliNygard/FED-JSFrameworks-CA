@@ -54,16 +54,17 @@ export const Search: React.FC<
         isLoading={isLoading}
         isError={isError}
       />
+
       {searchResult.length === 0 ? (
-        <>
+        <div className="flex flex-col items-center gap-2 mt-10">
           <p>Unfortunately we do not have what you are looking for.</p>
           <p>
             Try a new search. Perhaps we have something else you might like.
           </p>
-        </>
+        </div>
       ) : (
-        <>
-          <h2>{`Display ${searchResultNumber} products for "${searchParamTerm}"`}</h2>
+        <section className="max-w-7xl m-auto">
+          <h2 className="">{`Display ${searchResultNumber} products for "${searchParamTerm}"`}</h2>
           <S.Ul>
             {searchResult.map((product) => (
               <li key={product.id} className="mb-3">
@@ -77,7 +78,7 @@ export const Search: React.FC<
               </li>
             ))}
           </S.Ul>
-        </>
+        </section>
       )}
     </>
   );

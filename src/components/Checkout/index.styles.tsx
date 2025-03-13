@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CheckoutContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
-  max-width: 1000px;
+  max-width: 1024px;
   margin: auto;
 
   @media (min-width: 679px) {
