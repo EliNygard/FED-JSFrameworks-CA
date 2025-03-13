@@ -22,6 +22,20 @@ function App() {
   const searchTermFromURL = params.get("term") || "";
 
   const [searchTerm, setSearchTerm] = useState(searchTermFromURL);
+  const [sortOption, setSortOption] = useState<string>("");
+
+  const sortedData =
+    sortOption === "all"
+      ? products
+      : [...products].sort((a, b) => {
+          if (sortOption === "low-high")
+            return a.discountedPrice - b.discountedPrice;
+          if (sortOption === "high-low")
+            return b.discountedPrice - a.discountedPrice;
+          if (sortOption === "a-z") return a.title.localeCompare(b.title);
+          if (sortOption === "z-a") return b.title.localeCompare(a.title);
+          return 0;
+        });
 
   useEffect(() => {
     setSearchTerm(searchTermFromURL);
@@ -41,6 +55,8 @@ function App() {
                 data={products}
                 isLoading={isLoading}
                 isError={isError}
+                setSortOption={setSortOption}
+                sortedData={sortedData}
               />
             }
           ></Route>
@@ -65,6 +81,8 @@ function App() {
                 data={products}
                 isLoading={isLoading}
                 isError={isError}
+                setSortOption={setSortOption}
+                sortedData={sortedData}
               />
             }
           ></Route>
@@ -77,6 +95,8 @@ function App() {
                 data={products}
                 isLoading={isLoading}
                 isError={isError}
+                setSortOption={setSortOption}
+                sortedData={sortedData}
               />
             }
           ></Route>
