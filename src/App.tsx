@@ -12,6 +12,7 @@ import ScrollToTop from "./components/helpers/ScrollToTop";
 import { useFetch } from "./hooks/useFetch";
 import { IProduct } from "./interface";
 import { baseUrl } from "./api/Constants";
+import Sale from "./pages/Sale";
 
 function App() {
   const { data, isLoading, isError } = useFetch<IProduct[]>(baseUrl);
@@ -59,6 +60,18 @@ function App() {
             path="search"
             element={
               <Search
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                data={products}
+                isLoading={isLoading}
+                isError={isError}
+              />
+            }
+          ></Route>
+          <Route
+            path="sale"
+            element={
+              <Sale
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
                 data={products}
