@@ -19,7 +19,7 @@ const Header = () => {
       <nav>
         <ul className="flex flex-row gap-4 items-center">
           <li className="text-primary uppercase">
-            <Link to="/contact">Contact</Link>
+            <Link to="/sale">Sale</Link>
           </li>
           <li className={styles.listitem}>
             <Link to="/cart">
