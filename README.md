@@ -10,7 +10,7 @@
 <div align="center">
 
  <a href="https://infinitefinds.netlify.app/">
-    <img src="./src/assets/logo-light.svg" alt="Logo" width="300" height="45">
+    <img src="./src/assets/Website-screenshot.png" alt="Website home page" >
   </a>
   
 </div>
