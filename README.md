@@ -7,13 +7,16 @@
 ##### Delivery: March 2025
 
 
-### **[Visit Infinite Finds](https://infinitefinds.netlify.app/)**
-
 <div align="center">
 
-logo?
+ <a href="https://infinitefinds.netlify.app/">
+    <img src="./src/assets/logo-light.svg" alt="Logo" width="300" height="45">
+  </a>
   
 </div>
+
+[Figma Design File](https://www.figma.com/design/YbtSJJbgrvVB3hfBbkhTpP/eCom?node-id=0-1&t=wuaRkZiOe5iHs9un-1) 
+[Visit Infinite Finds](https://infinitefinds.netlify.app/)
 
 
 ## Built With
