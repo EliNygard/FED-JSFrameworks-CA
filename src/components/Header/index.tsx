@@ -19,6 +19,9 @@ const Header = () => {
       <nav>
         <ul className="flex flex-row gap-4 sm:gap-8 items-center">
           <li className="text-primary uppercase">
+            <Link to="/contact">Contact</Link>
+          </li>
+          <li className="text-primary uppercase">
             <Link to="/sale">Sale</Link>
           </li>
           <li className={styles.listitem}>
