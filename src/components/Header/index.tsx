@@ -12,16 +12,16 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-10 flex justify-between items-center mx-2 bg-white py-6 px-2">
       <Link to={"/"}>
-        <h1 className="text-primary text-xl md:text-2xl font-montserrat">
+        <h1 className="text-primary text-lg sm:text-xl md:text-2xl font-montserrat">
           Infinite Finds
         </h1>
       </Link>
       <nav>
         <ul className="flex flex-row gap-4 sm:gap-8 items-center">
-          <li className="text-primary uppercase">
+          <li className="text-primary uppercase text-sm sm:text-base md:text-lg">
             <Link to="/contact">Contact</Link>
           </li>
-          <li className="text-primary uppercase">
+          <li className="text-primary uppercase text-sm sm:text-base md:text-lg">
             <Link to="/sale">Sale</Link>
           </li>
           <li className={styles.listitem}>
