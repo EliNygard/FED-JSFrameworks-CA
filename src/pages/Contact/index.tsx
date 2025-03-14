@@ -22,7 +22,7 @@ export const Contact: React.FC<
         isError={isError}
       />
 
-      <section className="border border-black mt-8 mb-8 p-3 sm:max-w-9/12 m-auto">
+      <section className="border border-black mt-8 mb-8 p-3 sm:max-w-2xl m-auto">
         <div className="my-3">
           <ContactForm />
         </div>
