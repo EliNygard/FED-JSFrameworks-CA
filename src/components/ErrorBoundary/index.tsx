@@ -31,12 +31,22 @@ class ErrorBoundary extends React.Component<
   }
 
   render() {
-    if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return this.props.fallback;
+    // You can render any custom fallback UI
+
+    // if (this.state.hasError) {
+    //   return this.props.fallback;
+    // }
+
+    // return this.props.children;
+
+    const { fallback, children } = this.props;
+    const { hasError } = this.state;
+
+    if (hasError) {
+      return fallback;
     }
 
-    return this.props.children;
+    return children;
   }
 }
 
