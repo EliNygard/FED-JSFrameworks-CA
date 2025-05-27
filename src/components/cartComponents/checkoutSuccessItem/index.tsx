@@ -3,27 +3,40 @@ import * as S from "../CartItem/index.styles";
 import ProductPrice from "@/components/productComponents/ProductPrice";
 import { IProductProps } from "@/interface";
 
-const CheckoutSuccessItem: React.FC<IProductProps> = ({ product }) => {
-  const { price, discountedPrice } = product;
+/**
+ * CheckoutSuccessItem component displays the item on checkout success
+ * - image of product
+ * - the quantity
+ * - the product title
+ * - the product price and discounted price if so
+ * - the total quantity and price
+ */
 
-  const cartItemTotal = product.price * product.quantity;
-  const cartItemTotalDiscounted = product.discountedPrice * product.quantity;
+const CheckoutSuccessItem: React.FC<IProductProps> = ({
+  price,
+  quantity,
+  discountedPrice,
+  image,
+  title,
+}) => {
+  const cartItemTotal = price * quantity;
+  const cartItemTotalDiscounted = discountedPrice * quantity;
   return (
     <>
       <S.CartItemContainer>
         <div className="flex flex-row gap-3">
           <div className="w-1/2">
-            <img src={product.image.url} alt={product.title} />
+            <img src={image.url} alt={title} />
 
             <div className="flex flex-row gap-1 mt-2">
-              <p>{`Quantity: ${product.quantity}`}</p>
+              <p>{`Quantity: ${quantity}`}</p>
             </div>
           </div>
 
           <div className="flex flex-col justify-between">
             <div>
-              <h3>{product.title}</h3>
-              <ProductPrice product={product} />
+              <h3>{title}</h3>
+              <ProductPrice price={price} discountedPrice={discountedPrice} />
             </div>
             <div className="flex gap-5">
               {price > discountedPrice ? (
