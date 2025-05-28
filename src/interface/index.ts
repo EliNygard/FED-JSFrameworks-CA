@@ -63,3 +63,11 @@ export interface CheckoutSuccessDisplayProps {
   cartTotal: number;
   discountTotal: number;
 }
+
+export interface CheckoutSuccessItemProps {
+  price: number;
+  discountedPrice: number;
+  quantity: number;
+  image: IProductImage;
+  title: string;
+}

@@ -23,12 +23,10 @@ const ProductRating: React.FC<IProductProps> = ({ product }) => {
     );
 
   return (
-    <>
-      <ul className="flex flex-row gap-1">
-        {ratingDisplay}
-        <span className="ml-1 text-xs text-neutral-500">{`(${rating})`}</span>
-      </ul>
-    </>
+    <ul className="flex flex-row gap-1">
+      {ratingDisplay}
+      <span className="ml-1 text-xs text-neutral-500">{`(${rating})`}</span>
+    </ul>
   );
 };
 

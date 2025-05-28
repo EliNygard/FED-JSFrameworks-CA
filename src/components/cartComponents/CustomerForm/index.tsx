@@ -21,7 +21,7 @@ const customerSchema = yup
       .string()
       .min(
         2,
-        "Please enter your first name. First name must be at least 2 characters",
+        "Please enter your first name. First name must be at least 2 characters"
       )
       .max(30, "First name can not be over 30 characters")
       .required("Please enter your first name"),
@@ -29,7 +29,7 @@ const customerSchema = yup
       .string()
       .min(
         2,
-        "Please enter your last name. Last name must be at least 2 characters",
+        "Please enter your last name. Last name must be at least 2 characters"
       )
       .max(30, "Last name can not be over 30 characters")
       .required("Please enter your last name"),
@@ -37,7 +37,7 @@ const customerSchema = yup
       .string()
       .min(
         3,
-        "Please enter the street name. Street name must be at least 3 characters",
+        "Please enter the street name. Street name must be at least 3 characters"
       )
       .max(100, "Street name can not be over 100 characters")
       .required("Please enter a street address"),

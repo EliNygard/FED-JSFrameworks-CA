@@ -19,8 +19,8 @@ const SearchBar: React.FC<
                 ?.toLowerCase()
                 .includes(searchTerm.toLowerCase()) ||
               product.tags?.some((tag) =>
-                tag.toLowerCase().includes(searchTerm.toLowerCase()),
-              ),
+                tag.toLowerCase().includes(searchTerm.toLowerCase())
+              )
           )
           .slice(0, 5)
       : [];
@@ -85,7 +85,10 @@ const SearchBar: React.FC<
                         />
                       </div>
                       <h3>{product.title}</h3>
-                      <ProductPrice product={product} />
+                      <ProductPrice
+                        price={product.price}
+                        discountedPrice={product.discountedPrice}
+                      />
                     </section>
                   </Link>
                 </li>

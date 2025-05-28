@@ -50,8 +50,8 @@ export const Search: React.FC<
         ?.toLowerCase()
         .includes(searchParamTerm.toLowerCase()) ||
       product.tags?.some((tag) =>
-        tag.toLowerCase().includes(searchParamTerm.toLowerCase()),
-      ),
+        tag.toLowerCase().includes(searchParamTerm.toLowerCase())
+      )
   );
 
   const searchResultNumber = searchResult.length;
