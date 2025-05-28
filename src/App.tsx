@@ -59,7 +59,7 @@ function App() {
                 sortedData={sortedData}
               />
             }
-          ></Route>
+          />
           <Route
             path="product/:id"
             element={
@@ -71,7 +71,7 @@ function App() {
                 isError={isError}
               />
             }
-          ></Route>
+          />
           <Route
             path="search"
             element={
@@ -85,7 +85,7 @@ function App() {
                 sortedData={sortedData}
               />
             }
-          ></Route>
+          />
           <Route
             path="sale"
             element={
@@ -99,12 +99,9 @@ function App() {
                 sortedData={sortedData}
               />
             }
-          ></Route>
-          <Route path="cart" element={<Cart />}></Route>
-          <Route
-            path="checkout/thank-you"
-            element={<CheckoutSuccess />}
-          ></Route>
+          />
+          <Route path="cart" element={<Cart />} />
+          <Route path="checkout/thank-you" element={<CheckoutSuccess />} />
           <Route
             path="contact"
             element={
@@ -116,8 +113,8 @@ function App() {
                 isError={isError}
               />
             }
-          ></Route>
-          <Route path="*"></Route>
+          />
+          <Route path="*" />
         </Route>
       </Routes>
     </>
