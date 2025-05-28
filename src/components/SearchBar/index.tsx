@@ -19,8 +19,8 @@ const SearchBar: React.FC<
                 ?.toLowerCase()
                 .includes(searchTerm.toLowerCase()) ||
               product.tags?.some((tag) =>
-                tag.toLowerCase().includes(searchTerm.toLowerCase()),
-              ),
+                tag.toLowerCase().includes(searchTerm.toLowerCase())
+              )
           )
           .slice(0, 5)
       : [];

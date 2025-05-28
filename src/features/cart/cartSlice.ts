@@ -42,7 +42,7 @@ const cartSlice = createSlice({
      */
     addProduct: (
       state: ICartState,
-      action: { payload: import("@/interface").IProduct },
+      action: { payload: import("@/interface").IProduct }
     ) => {
       const product = action.payload;
       const existingProduct = state.products.find((p) => p.id === product.id);
@@ -60,12 +60,12 @@ const cartSlice = createSlice({
           (p.price === p.discountedPrice
             ? p.price * p.quantity
             : p.discountedPrice * p.quantity),
-        0,
+        0
       );
 
       state.cartQuantity = state.products.reduce(
         (total, p) => total + p.quantity,
-        0,
+        0
       );
     },
 
@@ -83,12 +83,12 @@ const cartSlice = createSlice({
           (p.price === p.discountedPrice
             ? p.price * p.quantity
             : p.discountedPrice * p.quantity),
-        0,
+        0
       );
 
       state.cartQuantity = state.products.reduce(
         (total, p) => total + p.quantity,
-        0,
+        0
       );
     },
 
@@ -113,12 +113,12 @@ const cartSlice = createSlice({
           (p.price === p.discountedPrice
             ? p.price * p.quantity
             : p.discountedPrice * p.quantity),
-        0,
+        0
       );
 
       state.cartQuantity = state.products.reduce(
         (total, p) => total + p.quantity,
-        0,
+        0
       );
     },
 
@@ -162,6 +162,6 @@ export const selectDiscountTotal = createSelector(
   (products) =>
     products.reduce(
       (total, p) => total + (p.price - p.discountedPrice) * p.quantity,
-      0,
-    ),
+      0
+    )
 );

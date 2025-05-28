@@ -26,7 +26,7 @@ const Sale: React.FC<
   sortedData,
 }) => {
   const itemsOnSale = sortedData.filter(
-    (product) => product.discountedPrice < product.price,
+    (product) => product.discountedPrice < product.price
   );
 
   return isLoading || !data ? (

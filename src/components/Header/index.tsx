@@ -6,7 +6,7 @@ import { RootState } from "@/app/store";
 
 const Header = () => {
   const cartQuantity = useSelector(
-    (state: RootState) => state.cart.cartQuantity,
+    (state: RootState) => state.cart.cartQuantity
   );
 
   return (
