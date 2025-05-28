@@ -85,7 +85,10 @@ const SearchBar: React.FC<
                         />
                       </div>
                       <h3>{product.title}</h3>
-                      <ProductPrice product={product} />
+                      <ProductPrice
+                        price={product.price}
+                        discountedPrice={product.discountedPrice}
+                      />
                     </section>
                   </Link>
                 </li>
