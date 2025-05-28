@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSX } from "react";
 import ProductPrice from "@/components/productComponents/ProductPrice";
 import * as S from "./index.styles";
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -18,7 +18,9 @@ import { IProductProps } from "@/interface";
  * @param {import('@/interface').IProduct} props.product - The product to render in the cart.
  * @returns {JSX.Element} A styled container with product info and controls.
  */
-const CartItem: React.FC<IProductProps> = ({ product }) => {
+const CartItem: React.FC<IProductProps> = ({
+  product,
+}: IProductProps): JSX.Element => {
   const dispatch = useDispatch();
 
   const { price, discountedPrice, quantity, image, title, id } = product;
@@ -58,7 +60,7 @@ const CartItem: React.FC<IProductProps> = ({ product }) => {
         <div className="flex flex-col justify-between">
           <div>
             <h3>{title}</h3>
-            <ProductPrice product={product} />
+            <ProductPrice price={price} discountedPrice={discountedPrice} />
             <button
               aria-label="Remove item"
               onClick={() => dispatch(removeProduct(id))}
