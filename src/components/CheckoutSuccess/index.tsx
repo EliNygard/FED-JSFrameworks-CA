@@ -11,6 +11,11 @@ const CheckoutSuccessDisplay: React.FC<CheckoutSuccessDisplayProps> = ({
   cartItems,
   cartTotal,
   discountTotal,
+  price,
+  discountedPrice,
+  quantity,
+  image,
+  title,
 }) => {
   return (
     <div className="max-w-5xl m-auto mt-8">
@@ -63,7 +68,13 @@ const CheckoutSuccessDisplay: React.FC<CheckoutSuccessDisplayProps> = ({
               <ul>
                 {cartItems.map((product) => (
                   <li key={product.id}>
-                    <CheckoutSuccessItem product={product} />
+                    <CheckoutSuccessItem
+                      quantity={quantity}
+                      price={price}
+                      discountedPrice={discountedPrice}
+                      image={image}
+                      title={title}
+                    />
                   </li>
                 ))}
               </ul>

@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "../CartItem/index.styles";
 import ProductPrice from "@/components/productComponents/ProductPrice";
-import { IProduct } from "@/interface";
+import { CheckoutSuccessItemProps } from "@/interface";
 
 /**
  * CheckoutSuccessItem component displays the item on checkout success
@@ -12,7 +12,7 @@ import { IProduct } from "@/interface";
  * - the total quantity and price
  */
 
-const CheckoutSuccessItem: React.FC<IProduct> = ({
+const CheckoutSuccessItem: React.FC<CheckoutSuccessItemProps> = ({
   price,
   quantity,
   discountedPrice,
