@@ -11,7 +11,7 @@ const ProductCard: React.FC<IProductProps> = ({ product }) => {
   const handleAddToCart = useAddToCart();
 
   return (
-    <>
+    <div>
       <Link to={`/product/${product.id}`}>
         <div className="relative h-[350px] max-h-[350px] w-full">
           <ProductImage product={product} />
@@ -20,12 +20,15 @@ const ProductCard: React.FC<IProductProps> = ({ product }) => {
           <ProductRating product={product} />
         </div>
         <h3 className="uppercase font-montserrat">{product.title}</h3>
-        <ProductPrice product={product} />
+        <ProductPrice
+          price={product.price}
+          discountedPrice={product.discountedPrice}
+        />
       </Link>
       <div className="">
         <Button onClick={() => handleAddToCart(product)}>Add to cart</Button>
       </div>
-    </>
+    </div>
   );
 };
 
